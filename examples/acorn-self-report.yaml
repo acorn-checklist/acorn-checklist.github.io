@@ -1,5 +1,4 @@
 # ACORN report for the development of ACORN itself (draft: items with a 'todo' still need the authors' approval).
-# The model name and ID are left blank in this public copy (see A1).
 acorn_version: 0.1.0
 report:
   report_id: acorn-self-report-2026-11-17
@@ -12,9 +11,9 @@ answers:
   A1:
     title: Models
     answer:
-    - model_name: null
+    - model_name: Claude Opus 5.5
       provider: Anthropic
-      version_id: null
+      version_id: claude-opus-5-5
       size: not_disclosed
       access_dates: 2026-11-16 to 2026-11-17; 2026-11-24 to 2026-11-26
       source_link: https://docs.anthropic.com/en/docs/about-claude/models
@@ -22,8 +21,7 @@ answers:
         policy check (24 Nov), then refining the items, website and overview figure and preparing release 0.1.0 (25-26 Nov)'
     source: agent_verified
     note: Web-reading subagents (2 in the first thread, 11 in the second) and a project coordinator agent were also used;
-      their models are not recorded. No other AI agents or models were used. The model name and ID are left blank in this
-      public copy.
+      their models are not recorded. No other AI agents or models were used.
     todo: null
   A2:
     title: Agent product and interface
