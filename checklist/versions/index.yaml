@@ -1,0 +1,10 @@
+# Archive of released ACORN versions. Each release is a frozen copy in checklist/versions/<version>/.
+# Do not edit archived files: the checks compare them against the sha256 recorded here.
+# Add releases with: python scripts/release.py <version>
+releases:
+- version: 0.1.0
+  date: '2026-11-26'
+  sha256:
+    checklist.yaml: 0e81b17b80a27720022e9ab9dc68545539877042bca7a7db32b3aa02559ce8b9
+    codebook.csv: 7387dc26c4917a2093e2690f1e857cedd682701d5ab8c1a8ecaa8fa3a4b6e838
+    acorn-report.schema.json: d0d10b7f8e2cd1c132899f50c5d294a89003ce4cad4ee11a3f8c3829b9076f19

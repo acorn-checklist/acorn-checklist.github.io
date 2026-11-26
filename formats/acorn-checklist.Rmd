@@ -1,0 +1,439 @@
+---
+title: "ACORN: AI CO-scientist Reporting Norms"
+subtitle: "Reporting checklist for research assisted by AI coding agents, version 0.1.0"
+output:
+  html_document: default
+  word_document: default
+  pdf_document: default
+---
+
+<!-- Generated from checklist/checklist.yaml by scripts/build_formats.py. Do not edit by hand. -->
+<!-- Fill in each 'Answer' and tick one 'Answered by' box: replace [ ] with [x]. -->
+
+Use this checklist to report how AI coding agents assisted your research. Core items should always be reported; optional items when relevant. For each item, record who provided the answer. If an answer is missing, say why: unknown, not applicable, not disclosed or not available. Coding agents can fill in most of this checklist themselves with the ACORN skill.
+
+**Project title:** 
+
+**Authors:** 
+
+**Date completed:** 
+
+# A. Agent, interface and supervision
+
+*Identify exactly which agents were used, how they were accessed, what they could do, and how closely humans supervised them.*
+
+## A1. Models (core)
+
+**Which model(s) powered the agent(s)? List every model used, including any change of model during the project.**
+
+*Guidance:* Report the exact identifier the interface reports (e.g. a dated model ID), not a marketing name alone. Use not_disclosed for size when the provider does not publish it. If the model changed partway through, list each model and when it was used.
+
+| Model name | Provider | Exact version or ID string | Size (parameters), if disclosed | Dates of access | Source link (model card or docs) | What it was used for |
+|---|---|---|---|---|---|---|
+|  |   |   |   |   |   |   |
+|  |   |   |   |   |   |   |
+|  |   |   |   |   |   |   |
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## A2. Agent product and interface (core)
+
+**Which agent product and interface were used to run the agent?**
+
+*Guidance:* The agent product matters as much as the model, because it sets the tools, permissions and system prompt.
+
+| Field | Answer |
+|---|---|
+| Agent product and version (e.g. CLI tool, IDE extension, web app, custom framework) |  |
+| Interface | [ ] command line [ ] ide extension [ ] web app [ ] desktop app [ ] api custom harness [ ] notebook [ ] other |
+| Where the agent's code ran (local machine, cloud sandbox, HPC, other) |  |
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## A3. Level of human supervision (core)
+
+**How closely did humans supervise the agent's actions? Choose the level that best describes most of the work, and note exceptions.**
+
+*Guidance:* If different stages ran at different levels (e.g. Level 1 for analysis, Level 3 for figure formatting), say so in the note.
+
+- [ ] Level 0: Human ran every step; the agent only suggested code or text
+- [ ] Level 1: Agent proposed actions; a human approved each one before it ran
+- [ ] Level 2: Agent acted within default permissions; a human approved risky actions
+- [ ] Level 3: Agent ran largely unattended, or with permission checks skipped
+
+Note: 
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## A4. Permissions (core)
+
+**Which permissions did the agent have?**
+
+*Guidance:* Report what the agent was allowed to do, whether or not it used every permission.
+
+- [ ] Read project files
+- [ ] Create or edit files
+- [ ] Run code or shell commands
+- [ ] Install software or packages
+- [ ] Access the internet
+- [ ] Act on external services (e.g. push to repositories, send messages, query databases)
+- [ ] All permission checks skipped
+
+Note: 
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## A5. Context, tools and aids (core)
+
+**What context, tools and aids were available to the agent?**
+
+*Guidance:* These shape the agent's behaviour as much as the model does. Share instruction files in the replication package where possible.
+
+| Field | Answer |
+|---|---|
+| Project instruction or memory files (e.g. AGENTS.md, CLAUDE.md), and whether they are shared |  |
+| Skills, plugins or custom commands |  |
+| Connected tools or servers (e.g. MCP servers, databases, APIs) |  |
+| Web search or browsing |  |
+| Use of subagents or multiple cooperating agents |  |
+| Other aids (e.g. this checklist's skill, templates, retrieval systems) |  |
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## A6. Model settings (optional)
+
+**Were any non-default model settings used (e.g. temperature, reasoning effort, context length, seed)?**
+
+*Guidance:* Most agent products do not expose these. Write "defaults" if nothing was changed.
+
+Answer: 
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## A7. Other AI tools (core)
+
+**Were any other AI tools used in the project or the manuscript, besides the agent(s) in A1 (e.g. a chatbot for language editing or translation, an AI literature search tool, an image generator)?
+**
+
+*Guidance:* Publishers require every AI tool to be disclosed, not only coding agents, so that the disclosure statement is complete. Leave the table empty if no other tools were used. Spelling and grammar checkers built into word processors do not need listing. Purpose codes for manuscript preparation follow the STM classification of AI use in manuscript preparation (2025): language_editing (STM 1), translation (2), drafting_text (3), illustrative_figures (4: illustrations not based on data), data_formatting (5), data_visualisation (6: graphs or tables of research data), code_formatting (7: no change in what the code does), reference_gathering (8). Uses in the research itself, which STM does not cover, are literature_search, data_analysis and code_generation. AI content presented as real research data or results (STM 9) is prohibited by publishers. List any AI-generated or AI-edited figure or image here, even if the agent made it, since most publishers require a disclosure in that figure's legend.
+
+| Tool or model name | Version or ID | Provider | Purpose (codes follow the STM classification, see guidance) | Where it was used (manuscript sections, figures, analysis steps) | Dates of use |
+|---|---|---|---|---|---|
+|  |   |   |   |   |   |
+|  |   |   |   |   |   |
+|  |   |   |   |   |   |
+
+*Allowed values.* Purpose (codes follow the STM classification, see guidance): language editing, translation, drafting text, illustrative figures, data formatting, data visualisation, code formatting, reference gathering, literature search, data analysis, code generation, other
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+# B. Human goals and instructions
+
+*Record what the humans asked the agent to do, so that its actions can be judged against its instructions.*
+
+## B1. Research goal given to the agent (core)
+
+**What overall goal did the humans give the agent?**
+
+*Guidance:* One to three sentences in the researchers' words, e.g. "Clean the survey data and run the pre-registered models".
+
+Answer: 
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## B2. Key instructions (core)
+
+**What were the key instructions that shaped the work (e.g. constraints, preferred methods, things the agent was told not to do)?**
+
+*Guidance:* Summarise instructions that changed what the agent did. Full prompts belong in the transcripts, if you deposit them (B3).
+
+Answer: 
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## B3. Transcripts (optional)
+
+**Are the conversation transcripts (anonymised where needed) publicly deposited, and where?**
+
+*Guidance:* Full transcripts are the strongest record of who decided what. If they cannot be shared, explain why and what is shared instead.
+
+| Field | Answer |
+|---|---|
+| Deposited | [ ] all [ ] partial [ ] no |
+| Persistent link |  |
+| What was removed or anonymised |  |
+| Reason if not deposited |  |
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+# C. Agent contributions
+
+*Record which parts of the research the agent contributed to, and which ideas came from the agent versus the humans.*
+
+## C1. Contributions by role (core)
+
+**For each research role, how much did the agent contribute?**
+
+*Guidance:* Roles follow the CRediT contributor taxonomy, with additions for literature, derivations, simulation and references. "Assisted" means a human led and the agent helped; "led" means the agent did most of the work. The two writing roles cover the text of the paper itself: use "original draft" when text the agent wrote appears in the paper, and "review and editing" when the agent revised the paper's text. Text the agent wrote for anything else (documentation, study materials, code comments, the research product itself) goes under the role it served, or under Other.
+
+| Role | Agent contribution | What the agent did |
+|---|---|---|
+| Conceptualization (research questions, hypotheses) |   |   |
+| Literature search and review |   |   |
+| Methodology (design, analysis plan) |   |   |
+| Data curation (collection, cleaning, merging) |   |   |
+| Formal analysis (statistics, models) |   |   |
+| Derivations, proofs or theory |   |   |
+| Simulation or computational modelling |   |   |
+| Software (writing code, packages, pipelines) |   |   |
+| Validation (testing, checking results) |   |   |
+| Visualization (figures, tables) |   |   |
+| Writing the paper: original draft |   |   |
+| Writing the paper: review and editing |   |   |
+| References and citations |   |   |
+| Other (specify) |   |   |
+
+*Allowed values.* Agent contribution: none, assisted, led
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## C2. Origin of ideas (optional)
+
+**Which substantive ideas (hypotheses, research questions, analytic approaches, interpretations) came from the agent, and which from humans?**
+
+*Guidance:* List ideas that shaped the paper. Ideas from meetings or earlier sessions often need the humans to fill in.
+
+| Idea | Originated by | Adopted in the final work? |
+|---|---|---|
+|  |   |   |
+|  |   |   |
+|  |   |   |
+
+*Allowed values.* Originated by: human, agent, joint, unknown; Adopted in the final work?: yes, no, partly
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+# D. Decision log
+
+*Record who made the key decisions and why. Agents make many decisions quickly and confidently; readers need to know which were made by humans and which by agents.*
+
+## D1. Key decisions (core)
+
+**List the decisions that could change the results or their interpretation, and who proposed and approved each one.**
+
+*Guidance:* Include every decision a careful reviewer would ask about. "Approved by: agent_autonomous" means the agent made and acted on the decision without a human approving it.
+
+| Decision (e.g. exclusion rule, model specification, outlier handling, deviation from plan) | Proposed by | Approved by | Rationale | Alternatives considered | Where documented (file, commit, transcript) |
+|---|---|---|---|---|---|
+|  |   |   |   |   |   |
+|  |   |   |   |   |   |
+|  |   |   |   |   |   |
+
+*Allowed values.* Proposed by: human, agent, unknown; Approved by: human, agent autonomous, unknown
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+# E. Verification and research integrity
+
+*Record how agent outputs were checked, how flexible the analysis was, and what went wrong.*
+
+## E1. Human verification of agent outputs (core)
+
+**How did humans verify the agent's outputs?**
+
+*Guidance:* Supervision during the session (A3) is not the same as checking the outputs afterwards. Report both.
+
+| Output (e.g. cleaning script, main model, figure 2, manuscript section) | Verification method | Notes |
+|---|---|---|
+|  |   |   |
+|  |   |   |
+|  |   |   |
+
+*Allowed values.* Verification method: read line by line, rerun independently, tests, manual calculation, spot check, not verified
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## E2. Pre-registration and analytic flexibility (core)
+
+**Was the study pre-registered, and how much did the agent explore alternative analyses?**
+
+*Guidance:* Agents can run many specifications quickly. Report them so readers can judge the risk of undisclosed analytic flexibility.
+
+| Field | Answer |
+|---|---|
+| Pre-registered | [ ] yes [ ] no [ ] not applicable |
+| Link to pre-registration |  |
+| Did the agent see outcome data before the analysis plan was fixed? | [ ] yes [ ] no [ ] unknown |
+| Approximate number of alternative analyses or specifications the agent ran |  |
+| Are all alternatives reported (e.g. in supplementary material)? | [ ] yes [ ] no [ ] partly |
+| Deviations from the pre-registration and who decided them |  |
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## E3. Errors and corrections (optional)
+
+**What notable agent errors were found, and how were they caught?**
+
+*Guidance:* Reporting errors helps readers judge reliability, and helps the field learn where agents fail.
+
+| Error (e.g. wrong code, invented function or package, invented citation, silent data change) | Caught by | How it was fixed |
+|---|---|---|
+|  |   |   |
+|  |   |   |
+|  |   |   |
+
+*Allowed values.* Caught by: human, agent, test, reviewer
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+# F. Reproducibility
+
+*Give an independent researcher or agent what they need to reproduce the analyses and results.*
+
+## F1. Code and materials (core)
+
+**Where are the code, scripts and materials produced with the agent deposited?**
+
+*Guidance:* Use a persistent archive (e.g. a Zenodo DOI or OSF), not only a repository URL.
+
+| Field | Answer |
+|---|---|
+| Persistent link (DOI, repository, archive) |  |
+| Reason if not shared |  |
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## F2. Computational environment (core)
+
+**What languages, packages and versions were used, and where is the exact environment specified?**
+
+*Guidance:* Pin exact versions in a lock file and deposit it with the code.
+
+| Field | Answer |
+|---|---|
+| Languages and versions |  |
+| Key packages and versions |  |
+| Environment specification file (e.g. renv.lock, uv.lock, environment.yml, Dockerfile, Manifest.toml) |  |
+| Operating system and relevant hardware |  |
+| Session information deposited (e.g. sessionInfo(), pip freeze) and where |  |
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## F3. Token use and cost (optional)
+
+**Approximately how many tokens were used, and what did agent use cost?**
+
+*Guidance:* Report approximate figures if available. Use "not_available" if the interface does not show them, or the cost of a flat subscription if that is all you know.
+
+| Field | Answer |
+|---|---|
+| Approximate total tokens (input and output) |  |
+| Approximate cost |  |
+| Currency of the cost (e.g. USD, GBP) |  |
+| Do these figures cover all agent sessions in the project? | [ ] all sessions [ ] some sessions [ ] unknown |
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+# G. Data protection and ethics
+
+*Record what data the agent saw, where that data went, and how personal or sensitive information was protected.*
+
+## G1. Data the agent could access (core)
+
+**What level of data access did the agent have?**
+
+*Guidance:* Note in the note field whether the data contained personal or sensitive information.
+
+- [ ] No research data
+- [ ] Variable names, schema or codebook only
+- [ ] Synthetic or simulated data only
+- [ ] A sample of the data
+- [ ] The full dataset
+
+Note: 
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## G2. Protection of personal or sensitive data (core)
+
+**How was personal or sensitive information protected?**
+
+*Guidance:* Where the data went and who keeps it matters as much as whether it was anonymised.
+
+| Field | Answer |
+|---|---|
+| Anonymised or pseudonymised before the agent saw it? | [ ] yes [ ] no [ ] not applicable |
+| Was data sent to the model provider's servers? | [ ] yes [ ] no [ ] unknown |
+| Provider's data retention and training terms that applied (e.g. zero retention, no training on data) |  |
+| Other safeguards (e.g. local model, secure environment) |  |
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+## G3. Ethics approval (core)
+
+**Did the ethics approval or data agreement cover processing the data with an AI agent?**
+
+*Guidance:* Name the approving body and reference number where relevant.
+
+- [ ] Yes, explicitly
+- [ ] No
+- [ ] Not required (e.g. no human-subjects data)
+- [ ] Unknown
+
+Note: 
+
+*Answered by:* [ ] Agent (from its own records, settings or project files) [ ] Human [ ] Agent, checked by a human [ ] Unknown
+
+# Disclosure wording for your manuscript
+
+Copy this wording into your manuscript. Replace each part in square brackets, or let the ACORN skill fill it in from your completed report. Publishers want AI use in the research described in the Methods, and writing or translation help declared in the Acknowledgements or a separate AI declaration; some also ask for a note in the cover letter and in the legend of any AI-generated or AI-edited figure. Check your target journal's policy (see the publisher policy table) and use the pieces it asks for.
+
+## Methods
+
+*Where:* Methods section (or a subsection such as "Use of AI tools"). Required by all major publishers for AI used in the research, including code and analysis.
+
+> AI coding agents assisted with this research. We used [agent product and model with its exact version, e.g. Example Agent CLI 2.3 with example-model-2026-09-01 (Example Provider)] for [research tasks, e.g. data cleaning and writing the analysis code]. [human oversight, e.g. The authors approved each action of the agent before it ran.] [how outputs were checked, e.g. The authors read all agent-written code line by line and re-ran the main analyses independently.] The authors take full responsibility for all AI-assisted outputs. The use of AI agents, including which decisions were made by the agents and which by the authors, is documented in the completed ACORN checklist (v0.1.0), available at [URL/DOI].
+
+## Acknowledgements (full)
+
+*Where:* Acknowledgements
+
+> AI coding agents assisted with parts of this work, including [tasks, e.g. data cleaning, analysis code and figures]. Their use is documented in the completed ACORN checklist (v0.1.0), available at [URL/DOI]. The authors reviewed all AI-assisted outputs and take full responsibility for the content.
+
+## Acknowledgements (short)
+
+*Where:* Acknowledgements, when space is limited and the Methods already describe the AI use
+
+> AI tools were used in this work and are reported in the ACORN checklist (v0.1.0): [URL/DOI].
+
+## AI declaration for writing assistance
+
+*Where:* A separate declaration where the journal asks for one (e.g. Elsevier's "Declaration of generative AI and AI-assisted technologies in the manuscript preparation process"), otherwise the Acknowledgements. Needed when AI drafted, restructured or translated text; basic grammar and spelling checks are exempt.
+
+> During the preparation of this work, the authors used [AI tools used for writing, with versions] for [writing tasks, e.g. editing the language of the Introduction and translating the abstract]. After using these tools, the authors reviewed and edited the content as needed and take full responsibility for the content of the published article.
+
+## Figure legend
+
+*Where:* The legend of each figure or image that AI generated or edited (required by Elsevier, Wiley, PNAS and Springer Nature; Science journals need the editors' permission first). Not needed for plots that code draws from your data, which the Methods cover.
+
+> This figure was created or edited with the help of [AI tool and version, and what it did to the figure]. The authors checked that it accurately represents the underlying data or concept.
+
+## Cover letter
+
+*Where:* Cover letter to the editor (required by Science journals, and useful for any journal)
+
+> AI coding agents were used in this research and are described in the Methods. Their use is documented in full in the completed ACORN checklist (v0.1.0), available at [URL/DOI].
+
+## Data and code availability
+
+*Where:* Data, code or materials availability statement
+
+> The completed ACORN report on the use of AI coding agents (v0.1.0) is available with the replication materials at [URL/DOI].
+
+**Tips**
+
+- Cite the exact ACORN version you used, as the wording does, so readers know which items you answered.
+- Deposit the completed report (acorn-report.yaml and acorn-report.md) with a persistent identifier, such as a Zenodo or OSF DOI, and link to that DOI rather than to a web page or repository URL that may change.
+- Cite ACORN itself in your references (see How to cite on the ACORN website).
+- Do not list an AI agent as an author, and do not cite an AI tool as the author of a source. Every major publisher forbids it.
+- Disclose every AI tool, not only the coding agent (item A7), and name each with its exact version.

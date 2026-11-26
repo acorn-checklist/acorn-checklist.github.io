@@ -1,0 +1,495 @@
+# ACORN report for the development of ACORN itself (draft: items with a 'todo' still need the authors' approval).
+# The model name and ID are left blank in this public copy (see A1).
+acorn_version: 0.1.0
+report:
+  report_id: acorn-self-report-2026-11-17
+  title: 'ACORN: AI CO-scientist Reporting Norms (development of the checklist, website, skill and tooling)'
+  authors: Yara Kyrychenko (YK); Jon Roozenbeek (JR)
+  doi: not_available
+  discipline: meta-science / research methods
+  report_date: '2026-11-26'
+answers:
+  A1:
+    title: Models
+    answer:
+    - model_name: null
+      provider: Anthropic
+      version_id: null
+      size: not_disclosed
+      access_dates: 2026-11-16 to 2026-11-17; 2026-11-24 to 2026-11-26
+      source_link: https://docs.anthropic.com/en/docs/about-claude/models
+      used_for: 'All work in both project threads: building ACORN (16-17 Nov) and adding disclosure wording and the publisher
+        policy check (24 Nov), then refining the items, website and overview figure and preparing release 0.1.0 (25-26 Nov)'
+    source: agent_verified
+    note: Web-reading subagents (2 in the first thread, 11 in the second) and a project coordinator agent were also used;
+      their models are not recorded. No other AI agents or models were used. The model name and ID are left blank in this
+      public copy.
+    todo: null
+  A2:
+    title: Agent product and interface
+    answer:
+      agent_product: Claude Code 2.1.326 (16-17 Nov), 2.1.331 (24 Nov) and 2.1.332 (26 Nov), each running as a thread of a Claude project
+      interface: web_app
+      execution_environment: Anthropic-managed cloud sandbox (Ubuntu 24.04), with the GitHub repository cloned into it
+    source: agent
+    note: The built-in browser on the human's computer was used to read three publisher policy pages that blocked automated
+      fetching.
+    todo: null
+  A3:
+    title: Level of human supervision
+    answer: '2'
+    source: agent_verified
+    note: '''Auto'' permission mode in both threads: no per-action approval, and an automated check blocked risky actions
+      (it blocked one force push). Changes reached the main branch only through pull requests merged by the human.'
+    todo: null
+  A4:
+    title: Permissions
+    answer:
+    - read_files
+    - write_files
+    - run_code
+    - install_packages
+    - internet
+    - external_services
+    source: agent
+    note: 'External services: GitHub branches and pull requests, and public web pages. Permission checks were not skipped.'
+    todo: null
+  A5:
+    title: Context, tools and aids
+    answer:
+      instruction_files: No AGENTS.md or CLAUDE.md in the repository. Platform-level project instructions applied (not shared).
+      skills: None invoked during development; the ACORN skill itself was used to produce this report (17 Nov and 24 Nov).
+      tool_servers: GitHub (MCP server) for pull requests; web search; a shared project file folder; Claude's built-in browser
+        on the human's computer (24 Nov)
+      web_access: 'Yes: web search and page reading (GUIDE-LLM website, name-clash searches, seven publisher AI policies,
+        existing policy trackers and studies, the STM classification of AI use)'
+      subagents: 'Yes: 2 web-reading subagents in the first thread (GUIDE-LLM site; TRACE name clashes) and 11 in the second
+        (publisher policies, policy trackers and studies, STM classification)'
+      other_aids: pandoc, pdflatex, LibreOffice and a headless Chromium browser were used only to check the generated files
+        and website (pdflatex was not available on 24 Nov, so the LaTeX changes were not compiled)
+    source: agent
+    note: null
+    todo: null
+  A6:
+    title: Model settings
+    answer: Reasoning effort set to 'medium'; other settings defaults (not exposed by the interface).
+    source: agent
+    note: null
+    todo: null
+  A7:
+    title: Other AI tools
+    answer:
+    - tool: Grammarly
+      version_id: unknown
+      provider: Grammarly
+      purpose: language_editing
+      where_used: 'Manuscript text: grammar and clarity checks only'
+      dates: unknown
+    source: human
+    note: The paper was written without AI.
+    todo: null
+  B1:
+    title: Research goal given to the agent
+    answer: Develop a reporting checklist for AI coding agents in empirical research (focus on computational social science
+      and experimental behavioural science, usable in any field), in LaTeX, R Markdown, Word and as an agent-agnostic skill,
+      with a website on GitHub Pages where others can propose changes. Add ready-to-paste disclosure wording to every format,
+      make the skill draft Methods and Acknowledgements wording, check ACORN against the AI policies of the major publishers,
+      and make the skill check those policies and the researcher's target journals.
+    source: agent_verified
+    note: null
+    todo: null
+  B2:
+    title: Key instructions
+    answer: Suggest refinements to the human's field list but make each one explicit with its reason, and implement nothing
+      without confirmation. The human writes the paper; the agent does not. Use GitHub Pages; give step-by-step instructions
+      to make the site public only when ready. Make it a standalone standard, governed by the research team. Keep all previous
+      versions accessible and make reports easy to analyse quantitatively and qualitatively. Make disclosure maximally easy
+      to implement. Check all major publishers' AI policies for updates and flag them, and check any target journal named
+      by the researcher for gaps or differences.
+    source: agent
+    note: null
+    todo: null
+  B3:
+    title: Transcripts
+    answer:
+      deposited: 'no'
+      location: null
+      anonymisation: null
+      reason_if_not: Not deposited; available from the authors on reasonable request
+    source: human
+    note: null
+    todo: null
+  C1:
+    title: Contributions by role
+    answer:
+      conceptualization:
+        level: assisted
+        description: Human set the goal and the five-section field list; agent proposed 11 refinements (decision log, verification,
+          pre-registration, answer-source tag, CRediT roles and more), all accepted. On 24 Nov the coordinator agent proposed
+          the disclosure wording, and the agent proposed the new item A7 and the STM-aligned purpose codes; the human approved
+          them.
+      literature:
+        level: assisted
+        description: Agent read the GUIDE-LLM website (link given by the human), checked names for clashes and found related
+          standards (STM consultation, GAMER). Read the AI policies of Elsevier, Springer Nature, Taylor & Francis, Wiley,
+          SAGE, Science and PNAS (links given by the human), surveyed existing policy trackers and studies, and read the STM
+          classification of AI use.
+      methodology:
+        level: assisted
+        description: Agent designed the item structure, answer types, supervision scale, missing-value codes and versioning;
+          human approved the design. Mapped 19 publisher requirements to ACORN items, and designed item A7 and the disclosure
+          templates.
+      data_curation:
+        level: none
+        description: No research data.
+      formal_analysis:
+        level: none
+        description: No statistical analysis.
+      derivation:
+        level: none
+        description: null
+      simulation:
+        level: none
+        description: null
+      software:
+        level: led
+        description: 'Agent wrote all code: checklist validator, format generators, agent skill, report converter, release
+          script, website generator and CI checks. Later added the disclosure wording generator, the Cite & disclose and Publisher
+          AI policies pages.'
+      validation:
+        level: led
+        description: Agent ran the checks, compiled the LaTeX, rendered the Word file and screenshotted the website; human
+          reviewed and merged each pull request. On 24 Nov the human read all seven publisher policies and agreed with the
+          agent's assessment of them.
+      visualization:
+        level: led
+        description: Agent designed the website, its pages (including Cite & disclose and Publisher AI policies) and the fillable
+          forms. Agent also made the paper's overview figure of the checklist, drawn by a script it wrote from the checklist
+          file (scripts/build_figure.py); YK asked for the figure, requested changes and adopted it.
+      writing_draft:
+        level: assisted
+        description: The authors wrote the paper. Agent drafted its AI disclosure statement, which the authors adopted.
+      writing_review:
+        level: none
+        description: No agent involvement. The authors used Grammarly (A7) to edit the text for clarity and grammar.
+      references:
+        level: assisted
+        description: Agent compiled the GUIDE-LLM reference and the citation entry from the author names given by the human.
+          Compiled the publisher policy sources and related studies.
+      other:
+        level: led
+        description: 'Agent drafted the wording of the checklist itself (items, guidance, skill instructions, documentation,
+          disclosure templates and publisher policy summaries) from the humans'' original input: the goal, the initial field
+          list and their instructions and edits in each thread. Naming: agent proposed TRACE, found it was already in use, and
+          proposed ACORN, which the human chose.'
+    source: agent_verified
+    note: null
+    todo: null
+  C2:
+    title: Origin of ideas
+    answer:
+    - idea: Reporting checklist for AI coding agents, with the five original sections
+      originated_by: human
+      adopted: 'yes'
+    - idea: Multiple formats (LaTeX, R Markdown, Word, agent skill) and a GitHub Pages website
+      originated_by: human
+      adopted: 'yes'
+    - idea: Website feature for others to propose changes
+      originated_by: human
+      adopted: 'yes'
+    - idea: Single machine-readable source file from which every format is generated
+      originated_by: agent
+      adopted: 'yes'
+    - idea: Refinements R1-R11 (decision log, human verification, graded supervision scale, pre-registration and analytic
+        flexibility, errors, CRediT roles, agent context and tools, data protection, answer-source tag, optional size and
+        tokens, GUIDE-LLM alignment)
+      originated_by: agent
+      adopted: 'yes'
+    - idea: Logging mode in the skill (running decision log during a project)
+      originated_by: agent
+      adopted: 'yes'
+    - idea: 'Proposal system: pre-filled GitHub issue form, per-item discussion threads, Zenodo DOIs per release, tiered governance,
+        contributor credit'
+      originated_by: agent
+      adopted: partly
+    - idea: Name TRACE
+      originated_by: agent
+      adopted: 'no'
+    - idea: Name ACORN
+      originated_by: agent
+      adopted: 'yes'
+    - idea: Keep every previous version accessible on the website
+      originated_by: human
+      adopted: 'yes'
+    - idea: Structure reports for pooled quantitative and qualitative analysis
+      originated_by: human
+      adopted: 'yes'
+    - idea: Fixed answer codes, typed missing values, codebook, report schema and pooling script (implementation of the idea
+        above)
+      originated_by: agent
+      adopted: 'yes'
+    - idea: Fill in ACORN for the development of ACORN itself
+      originated_by: human
+      adopted: 'yes'
+    - idea: Ready-to-paste disclosure wording (Methods, Acknowledgements full and short) citing the ACORN version and a DOI
+      originated_by: agent
+      adopted: 'yes'
+    - idea: The skill suggests Methods and Acknowledgements wording
+      originated_by: human
+      adopted: 'yes'
+    - idea: Cite & disclose web page with fill-in fields and copy buttons
+      originated_by: agent
+      adopted: 'yes'
+    - idea: Check ACORN against the major publishers' AI policies, and have the skill re-check them and the target journals
+      originated_by: human
+      adopted: 'yes'
+    - idea: New item A7 (Other AI tools) and templates for a writing declaration, figure legends and the cover letter
+      originated_by: agent
+      adopted: 'yes'
+    - idea: Align A7 purpose codes with the STM classification of AI use in manuscript preparation
+      originated_by: agent
+      adopted: 'yes'
+    source: agent_verified
+    note: The disclosure wording was first proposed by the project coordinator agent.
+    todo: null
+  D1:
+    title: Key decisions
+    answer:
+    - decision: Adopt all 11 proposed refinements to the field list
+      proposed_by: agent
+      approved_by: human
+      rationale: Cover who decided what, verification and analytic flexibility, which the original list did not
+      alternatives: Keep the original fields
+      where_documented: planning/proposals-for-review.md; thread message 2026-11-16 21:36
+    - decision: Present ACORN as a standalone standard rather than a GUIDE-LLM extension
+      proposed_by: agent
+      approved_by: human
+      rationale: Human's choice; agent raised the question
+      alternatives: GUIDE-LLM extension
+      where_documented: Thread message 2026-11-16 21:36
+    - decision: Name the checklist ACORN
+      proposed_by: agent
+      approved_by: human
+      rationale: TRACE was already used by a closely related project; ACORN found free in web and Google Scholar searches
+      alternatives: TRACE, ACRE, LOGBOOK, LEDGER
+      where_documented: 'PR #1; thread 2026-11-16 21:58'
+    - decision: Govern changes through the research team, with tiered review
+      proposed_by: agent
+      approved_by: human
+      rationale: Human chose the research team; tiers adapted from GUIDE-LLM
+      alternatives: Steering group; community vote
+      where_documented: CONTRIBUTING.md
+    - decision: Graded supervision scale (levels 0-3) and the exact option lists of every item
+      proposed_by: agent
+      approved_by: human
+      rationale: 'Comparable across papers; human approved via the refinements and PR #1'
+      alternatives: Free text
+      where_documented: 'checklist/checklist.yaml, PR #1'
+    - decision: Add an optional logging mode to the skill
+      proposed_by: agent
+      approved_by: agent_autonomous
+      rationale: Records decisions as they happen, making reports more complete
+      alternatives: Report mode only
+      where_documented: 'PR #2 (flagged to the human, who merged without comment)'
+    - decision: Build the website with a custom Python static-site generator that deploys only when the repository is public
+      proposed_by: agent
+      approved_by: agent_autonomous
+      rationale: No extra dependencies; nothing published by accident
+      alternatives: Jekyll or another site framework; serve from a docs/ folder
+      where_documented: 'PR #4, scripts/build_site.py'
+    - decision: Read 'quantitatively and quantitatively' as quantitative and qualitative
+      proposed_by: agent
+      approved_by: agent_autonomous
+      rationale: Most likely meaning; stated in the reply
+      alternatives: Quantitative only
+      where_documented: Thread 2026-11-17 10:29
+    - decision: Missing-value codes, variable naming scheme and version archive design
+      proposed_by: agent
+      approved_by: agent_autonomous
+      rationale: 'Needed for pooled analysis; human merged PR #4'
+      alternatives: Free-text missing answers; no archive
+      where_documented: 'scripts/acorn_data.py, scripts/release.py, PR #4'
+    - decision: Make F3 (tokens and cost) a structured numeric record and E2 alternatives_run an integer
+      proposed_by: agent
+      approved_by: agent_autonomous
+      rationale: Numbers are needed for quantitative analysis; flagged to the human, who merged
+      alternatives: Keep as free text
+      where_documented: 'PR #4'
+    - decision: Cite with surnames only until first names are provided
+      proposed_by: agent
+      approved_by: agent_autonomous
+      rationale: Avoid guessing first names
+      alternatives: Guess initials
+      where_documented: 'CITATION.cff, PR #4'
+    - decision: Templates cite the live checklist version instead of a fixed 'v1.0'
+      proposed_by: agent
+      approved_by: agent_autonomous
+      rationale: Stays correct after each release; flagged to the human
+      alternatives: Fixed 'v1.0' as first agreed
+      where_documented: 'PR #6; thread 2026-11-24'
+    - decision: Draft the disclosure wording with a script from the report, then have the agent tailor it
+      proposed_by: agent
+      approved_by: agent_autonomous
+      rationale: Consistent and checkable wording; works for agents that cannot reason about every item
+      alternatives: Agent writes the wording freely
+      where_documented: 'scripts/render_report.py, PR #6'
+    - decision: Add item A7 (Other AI tools) as a core item
+      proposed_by: agent
+      approved_by: human
+      rationale: Every publisher requires all AI tools to be disclosed
+      alternatives: Optional item; leave out
+      where_documented: 'PR #6; thread 2026-11-24'
+    - decision: Classify each publisher requirement (required, recommended, not allowed, exempt) and ACORN's coverage
+      proposed_by: agent
+      approved_by: human
+      rationale: The human read all seven policies and agreed with the assessments
+      alternatives: None considered
+      where_documented: checklist/publisher-policies.yaml
+    - decision: Mark 'why AI was used' as covered rather than partly covered
+      proposed_by: human
+      approved_by: human
+      rationale: B1 and C1 record the purpose, which Elsevier's template treats as the reason
+      alternatives: Add a separate reason field
+      where_documented: Thread 2026-11-24 13:36
+    - decision: Treat checking the tool's terms as a skill check rather than a reporting item
+      proposed_by: agent
+      approved_by: human
+      rationale: Publishers ask authors to check the terms, not to report the check
+      alternatives: Add an output-ownership field to G2
+      where_documented: Thread 2026-11-24 13:36
+    - decision: Align A7 purpose codes with the STM classification
+      proposed_by: agent
+      approved_by: human
+      rationale: Shared vocabulary with publishers; Science uses it directly
+      alternatives: ACORN's own codes
+      where_documented: 'Thread 2026-11-24 13:46, PR #6'
+    - decision: Read the three publisher pages that blocked automated fetching through the built-in browser on the human's
+        computer
+      proposed_by: agent
+      approved_by: agent_autonomous
+      rationale: Only way to read the primary sources
+      alternatives: Rely on secondary summaries
+      where_documented: Thread 2026-11-24
+    - decision: Use the agent-made overview figure of the checklist in the paper
+      proposed_by: human
+      approved_by: human
+      rationale: Summarises the checklist's purpose and items at a glance
+      alternatives: Draw the figure by hand
+      where_documented: 'Thread 2026-11-26, PR #6'
+    source: agent_verified
+    note: null
+    todo: null
+  E1:
+    title: Human verification of agent outputs
+    answer:
+    - output: Checklist content (checklist.yaml)
+      method: read_line_by_line
+      notes: YK read the files, commits and diffs of every pull request; JR also read the checklist.
+    - output: Agent skill
+      method: rerun_independently
+      notes: JR read the skill and ran it independently on a test project, where it worked as intended; YK read its files and diffs.
+    - output: Word, LaTeX and R Markdown forms
+      method: read_line_by_line
+      notes: YK read the files and diffs. Agent compiled the LaTeX (first thread) and rendered the Word file;
+        R Markdown was not knitted (R unavailable).
+    - output: Scripts and website
+      method: tests
+      notes: Automated checks in CI on every push; agent screenshot checks; YK read the commits and diffs.
+    - output: Publisher policy table (checklist/publisher-policies.yaml)
+      method: rerun_independently
+      notes: The human read all seven policies and agreed with the agent's assessments (2026-11-24).
+    - output: Disclosure wording, Cite & disclose page and skill steps 5-6
+      method: read_line_by_line
+      notes: YK read the files and diffs; CI checks; agent tested the page in a headless browser.
+    source: human
+    note: null
+    todo: null
+  E2:
+    title: Pre-registration and analytic flexibility
+    answer:
+      preregistered: not_applicable
+      prereg_link: null
+      saw_outcomes_before_plan: not_applicable
+      alternatives_run: not_applicable
+      all_reported: not_applicable
+      deviations: The agreed four-step plan was followed. Additions requested later by the human (version archive, analysis
+        structure, citation) were added to the website step.
+    source: agent
+    note: Not an empirical study.
+    todo: null
+  E3:
+    title: Errors and corrections
+    answer:
+    - error: YAML read the answer option 'no' in item B3 as the boolean False
+      caught_by: agent
+      fix: 'Quoted the value and made the validator reject non-text options (PR #3)'
+    - error: Python f-string syntax that only works on newer Python versions in the website generator
+      caught_by: agent
+      fix: Rewritten before the first build
+    - error: Attempted an unnecessary force push when restarting a merged branch
+      caught_by: test
+      fix: Blocked by the automated permission check; a normal push was enough
+    - error: Proposed the name TRACE before checking whether it was already used
+      caught_by: human
+      fix: Human asked for a check; agent found clashes and proposed ACORN
+    - error: Marked 'why AI was used' and 'tool's terms checked' as partly covered on too strict a reading of the policies
+      caught_by: human
+      fix: Reclassified after the human questioned it
+    - error: A JavaScript regular expression inside a Python template string produced invalid-escape warnings
+      caught_by: agent
+      fix: Rewritten before committing
+    source: agent
+    note: '''test'' here means the session''s automated safety check.'
+    todo: null
+  F1:
+    title: Code and materials
+    answer: 'https://github.com/acorn-checklist/acorn-checklist.github.io (release 0.1.0); website https://acorn-checklist.github.io. Developed in a private repository; its
+      history is available from the authors on request.'
+    source: agent
+    note: Not yet in a persistent public archive.
+    todo: Add the Zenodo DOI of release 0.1.0 once it exists.
+  F2:
+    title: Computational environment
+    answer:
+      languages: Python 3.13.18 (sandbox); Python 3.12 in CI; JavaScript in the website
+      packages: 'PyYAML 6.0.3, python-docx 1.2.0, jsonschema 4.26.0, Markdown 3.11.3. Checks only: pandoc 3.1.3, pdfTeX (TeX
+        Live 2023, first thread only), LibreOffice 24.2.7, Playwright with Chromium, Node 22.23.5'
+      environment_file: requirements.txt (minimum versions, not pinned)
+      os_hardware: Ubuntu 24.04.5 LTS cloud sandbox (Linux 6.18)
+      session_info: not_available
+    source: agent
+    note: null
+    todo: null
+  F3:
+    title: Token use and cost
+    answer:
+      total_tokens: 56561767
+      cost: 25.79
+      currency: USD
+      coverage: some_sessions
+    source: agent
+    note: Both project threads, as recorded by the platform on 2026-11-24 (USD 15.37 and USD 10.42). Platform estimates, not
+      necessarily what was billed. Subagents and the project coordinator are not included.
+    todo: null
+  G1:
+    title: Data the agent could access
+    answer: none
+    source: agent
+    note: The agent saw only project messages and public web pages.
+    todo: null
+  G2:
+    title: Protection of personal or sensitive data
+    answer:
+      anonymised_before: not_applicable
+      sent_to_provider: not_applicable
+      provider_terms: No training on the user's data (account setting confirmed by YK)
+      other_safeguards: null
+    source: human
+    note: Project messages were processed by the model provider.
+    todo: null
+  G3:
+    title: Ethics approval
+    answer: not_required
+    source: agent_verified
+    note: null
+    todo: null

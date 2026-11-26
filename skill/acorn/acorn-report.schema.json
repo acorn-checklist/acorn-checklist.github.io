@@ -1,0 +1,1989 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ACORN report, checklist version 0.1.0",
+  "type": "object",
+  "required": [
+    "acorn_version",
+    "report",
+    "answers"
+  ],
+  "properties": {
+    "acorn_version": {
+      "type": "string"
+    },
+    "report": {
+      "type": "object",
+      "properties": {
+        "report_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Unique ID, e.g. the paper DOI or a UUID"
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authors": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "doi": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "DOI of the paper or preprint, once known"
+        },
+        "discipline": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Main research field, e.g. psychology, physics"
+        },
+        "report_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "YYYY-MM-DD"
+        }
+      },
+      "additionalProperties": false
+    },
+    "answers": {
+      "type": "object",
+      "properties": {
+        "A1": {
+          "type": "object",
+          "title": "A1. Models",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "model_name": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "provider": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "version_id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "size": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "access_dates": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "source_link": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "used_for": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                {
+                  "enum": [
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "A2": {
+          "type": "object",
+          "title": "A2. Agent product and interface",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "type": "object",
+              "properties": {
+                "agent_product": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "interface": {
+                  "enum": [
+                    "command_line",
+                    "ide_extension",
+                    "web_app",
+                    "desktop_app",
+                    "api_custom_harness",
+                    "notebook",
+                    "other",
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available",
+                    null
+                  ]
+                },
+                "execution_environment": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "A3": {
+          "type": "object",
+          "title": "A3. Level of human supervision",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "enum": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "unknown",
+                "not_applicable",
+                "not_disclosed",
+                "not_available",
+                null
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "A4": {
+          "type": "object",
+          "title": "A4. Permissions",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "enum": [
+                      "read_files",
+                      "write_files",
+                      "run_code",
+                      "install_packages",
+                      "internet",
+                      "external_services",
+                      "skip_permissions"
+                    ]
+                  },
+                  "uniqueItems": true
+                },
+                {
+                  "enum": [
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "A5": {
+          "type": "object",
+          "title": "A5. Context, tools and aids",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "type": "object",
+              "properties": {
+                "instruction_files": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "skills": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "tool_servers": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "web_access": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "subagents": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "other_aids": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "A6": {
+          "type": "object",
+          "title": "A6. Model settings",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "A7": {
+          "type": "object",
+          "title": "A7. Other AI tools",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "tool": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "version_id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "provider": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "purpose": {
+                        "enum": [
+                          "language_editing",
+                          "translation",
+                          "drafting_text",
+                          "illustrative_figures",
+                          "data_formatting",
+                          "data_visualisation",
+                          "code_formatting",
+                          "reference_gathering",
+                          "literature_search",
+                          "data_analysis",
+                          "code_generation",
+                          "other",
+                          "unknown",
+                          "not_applicable",
+                          "not_disclosed",
+                          "not_available",
+                          null
+                        ]
+                      },
+                      "where_used": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "dates": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                {
+                  "enum": [
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "B1": {
+          "type": "object",
+          "title": "B1. Research goal given to the agent",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "B2": {
+          "type": "object",
+          "title": "B2. Key instructions",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "B3": {
+          "type": "object",
+          "title": "B3. Transcripts",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "type": "object",
+              "properties": {
+                "deposited": {
+                  "enum": [
+                    "all",
+                    "partial",
+                    "no",
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available",
+                    null
+                  ]
+                },
+                "location": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "anonymisation": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "reason_if_not": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "C1": {
+          "type": "object",
+          "title": "C1. Contributions by role",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "type": "object",
+              "properties": {
+                "conceptualization": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "literature": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "methodology": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "data_curation": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "formal_analysis": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "derivation": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "simulation": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "software": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "validation": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "visualization": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "writing_draft": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "writing_review": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "references": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "other": {
+                  "type": "object",
+                  "properties": {
+                    "level": {
+                      "enum": [
+                        "none",
+                        "assisted",
+                        "led",
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available",
+                        null
+                      ]
+                    },
+                    "description": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "C2": {
+          "type": "object",
+          "title": "C2. Origin of ideas",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "idea": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "originated_by": {
+                        "enum": [
+                          "human",
+                          "agent",
+                          "joint",
+                          "unknown",
+                          "unknown",
+                          "not_applicable",
+                          "not_disclosed",
+                          "not_available",
+                          null
+                        ]
+                      },
+                      "adopted": {
+                        "enum": [
+                          "yes",
+                          "no",
+                          "partly",
+                          "unknown",
+                          "not_applicable",
+                          "not_disclosed",
+                          "not_available",
+                          null
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                {
+                  "enum": [
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "D1": {
+          "type": "object",
+          "title": "D1. Key decisions",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "decision": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "proposed_by": {
+                        "enum": [
+                          "human",
+                          "agent",
+                          "unknown",
+                          "unknown",
+                          "not_applicable",
+                          "not_disclosed",
+                          "not_available",
+                          null
+                        ]
+                      },
+                      "approved_by": {
+                        "enum": [
+                          "human",
+                          "agent_autonomous",
+                          "unknown",
+                          "unknown",
+                          "not_applicable",
+                          "not_disclosed",
+                          "not_available",
+                          null
+                        ]
+                      },
+                      "rationale": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "alternatives": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "where_documented": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                {
+                  "enum": [
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "E1": {
+          "type": "object",
+          "title": "E1. Human verification of agent outputs",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "output": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "method": {
+                        "enum": [
+                          "read_line_by_line",
+                          "rerun_independently",
+                          "tests",
+                          "manual_calculation",
+                          "spot_check",
+                          "not_verified",
+                          "unknown",
+                          "not_applicable",
+                          "not_disclosed",
+                          "not_available",
+                          null
+                        ]
+                      },
+                      "notes": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                {
+                  "enum": [
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "E2": {
+          "type": "object",
+          "title": "E2. Pre-registration and analytic flexibility",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "type": "object",
+              "properties": {
+                "preregistered": {
+                  "enum": [
+                    "yes",
+                    "no",
+                    "not_applicable",
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available",
+                    null
+                  ]
+                },
+                "prereg_link": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "saw_outcomes_before_plan": {
+                  "enum": [
+                    "yes",
+                    "no",
+                    "unknown",
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available",
+                    null
+                  ]
+                },
+                "alternatives_run": {
+                  "anyOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    {
+                      "enum": [
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "all_reported": {
+                  "enum": [
+                    "yes",
+                    "no",
+                    "partly",
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available",
+                    null
+                  ]
+                },
+                "deviations": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "E3": {
+          "type": "object",
+          "title": "E3. Errors and corrections",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "error": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "caught_by": {
+                        "enum": [
+                          "human",
+                          "agent",
+                          "test",
+                          "reviewer",
+                          "unknown",
+                          "not_applicable",
+                          "not_disclosed",
+                          "not_available",
+                          null
+                        ]
+                      },
+                      "fix": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                },
+                {
+                  "enum": [
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "F1": {
+          "type": "object",
+          "title": "F1. Code and materials",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "F2": {
+          "type": "object",
+          "title": "F2. Computational environment",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "type": "object",
+              "properties": {
+                "languages": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "packages": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "environment_file": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "os_hardware": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "session_info": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "F3": {
+          "type": "object",
+          "title": "F3. Token use and cost",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "type": "object",
+              "properties": {
+                "total_tokens": {
+                  "anyOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    {
+                      "enum": [
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "cost": {
+                  "anyOf": [
+                    {
+                      "type": "number",
+                      "minimum": 0
+                    },
+                    {
+                      "enum": [
+                        "unknown",
+                        "not_applicable",
+                        "not_disclosed",
+                        "not_available"
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "currency": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "coverage": {
+                  "enum": [
+                    "all_sessions",
+                    "some_sessions",
+                    "unknown",
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available",
+                    null
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "G1": {
+          "type": "object",
+          "title": "G1. Data the agent could access",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "enum": [
+                "none",
+                "schema",
+                "synthetic",
+                "sample",
+                "full",
+                "unknown",
+                "not_applicable",
+                "not_disclosed",
+                "not_available",
+                null
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "G2": {
+          "type": "object",
+          "title": "G2. Protection of personal or sensitive data",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "type": "object",
+              "properties": {
+                "anonymised_before": {
+                  "enum": [
+                    "yes",
+                    "no",
+                    "not_applicable",
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available",
+                    null
+                  ]
+                },
+                "sent_to_provider": {
+                  "enum": [
+                    "yes",
+                    "no",
+                    "unknown",
+                    "unknown",
+                    "not_applicable",
+                    "not_disclosed",
+                    "not_available",
+                    null
+                  ]
+                },
+                "provider_terms": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "other_safeguards": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "additionalProperties": false
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "G3": {
+          "type": "object",
+          "title": "G3. Ethics approval",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "answer": {
+              "enum": [
+                "yes",
+                "no",
+                "not_required",
+                "unknown",
+                "unknown",
+                "not_applicable",
+                "not_disclosed",
+                "not_available",
+                null
+              ]
+            },
+            "source": {
+              "enum": [
+                "agent",
+                "human",
+                "agent_verified",
+                "unknown",
+                null
+              ]
+            },
+            "note": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "todo": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "What a human still has to approve or provide. Must be empty in a final report."
+            }
+          },
+          "required": [
+            "answer",
+            "source"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

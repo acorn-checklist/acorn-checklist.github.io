@@ -1,0 +1,216 @@
+# Publisher AI policies and how ACORN meets them.
+#
+# The ACORN skill reads this file to (1) check each policy URL for changes since `last_checked`
+# and flag them to the researcher, and (2) check a target journal's policy against a report.
+# The website shows it as the publisher policy table. Update it when a policy changes:
+# re-read every URL, edit the cells and summaries, and set last_checked.
+#
+# Cell values: required | recommended | not_allowed | exempt | not_exempt | not_mentioned, optionally followed by
+# a short note after a colon. The `acorn` field names the ACORN items or disclosure templates that meet the requirement.
+
+last_checked: 2026-11-24
+
+# The STM classification of AI use in manuscript preparation (September 2025), which ACORN's A7 purpose codes follow.
+# Science journals' AI guidelines use these categories directly; other publishers may adopt them.
+stm_classification:
+  url: https://s3.eu-west-2.amazonaws.com/stm.offloadmedia/wp-content/uploads/2025/04/23020709/STM_AI_Classification_Recs_19_Sept2025-1.pdf
+  codes: {1: language_editing, 2: translation, 3: drafting_text, 4: illustrative_figures, 5: data_formatting, 6: data_visualisation, 7: code_formatting, 8: reference_gathering, 9: "prohibited: AI content presented as real research data or results"}
+
+publishers:
+  - id: elsevier
+    name: Elsevier
+    rank: 1
+    urls:
+      - https://www.elsevier.com/en-gb/about/policies-and-standards/generative-ai-policies-for-journals
+    policy_date: "June 2026 (as stated on the page)"
+    summary: >
+      AI used in the research process (study design, code development, data analysis) is allowed and must be described
+      in detail in the Methods, with the tool's name, version and developer. AI used to prepare the manuscript needs a
+      separate AI declaration statement (basic grammar and spelling checks are exempt) naming the tool, purpose and
+      extent of oversight. AI-made explanatory images are disclosed in the caption; AI must not create or alter images of
+      research data or graphical abstracts.
+  - id: springer_nature
+    name: Springer Nature
+    rank: 2
+    urls:
+      - https://www.nature.com/nature-portfolio/editorial-policies/ai
+      - https://www.springernature.com/gp/policies/editorial-policies/using-ai-in-research
+      - https://www.springernature.com/gp/policies/editorial-policies/ai-manuscript-preparation
+    policy_date: "not shown"
+    summary: >
+      Risk-based (green, amber, red). Low-risk uses (literature discovery, data cleaning, code scaffolding, language
+      editing) need the tool and purpose described. Analytical or interpretive uses (pattern finding, statistical
+      modelling, qualitative coding, drafting sections) need a clear methodological description and validation steps.
+      Not permitted: generating hypotheses, analyses or conclusions without human oversight, fabricated data or references,
+      sensitive data in public tools, AI images without verifiable source data, AI as author. AI-made visual content is
+      disclosed in an AI declaration and in its legend.
+  - id: taylor_francis
+    name: Taylor & Francis
+    rank: 3
+    urls:
+      - https://taylorandfrancis.com/our-policies/ai-policy/
+    policy_date: "not shown"
+    summary: >
+      Coding assistance, idea generation and language editing are allowed with human oversight. Any use of generative AI
+      must be acknowledged in a specific AI usage statement in the article, giving the tool's full name with version
+      number, how it was used and the reason for use. Code or text generated without rigorous revision, and AI-created
+      research outputs or images, are not allowed. Some journals restrict AI further.
+  - id: wiley
+    name: Wiley
+    rank: 4
+    urls:
+      - https://www.wiley.com/en-us/publishing/article/ai-guidelines
+    policy_date: "not shown"
+    summary: >
+      AI used in research methodology (study design, literature review, code development, data analysis) must be disclosed
+      in the Methods with the tool's name and version, date of use, its role, the authors' role in directing or reviewing
+      it, and how sensitive or human-subject data were protected. Writing, editing, translation and formatting help goes in
+      the Acknowledgements (simple grammar and word choice exempt). AI-made or edited visuals are disclosed in the figure
+      caption; AI-edited photographs are not allowed. Prompts, settings and code may be requested.
+  - id: sage
+    name: SAGE
+    rank: 5
+    urls:
+      - https://www.sagepub.com/journals/publication-ethics-policies/artificial-intelligence-policy
+    policy_date: "not shown"
+    summary: >
+      Assistive AI (language, grammar, structure) needs no disclosure. Generative AI, including AI-generated or AI-checked
+      code and any use that affects methods, analysis, results or conclusions, must be disclosed on submission in the
+      Methods or Acknowledgements, naming the model and its purpose. Not allowed: AI interviews in place of participants,
+      AI analysis of experiences and themes, fabricated references, AI images presented as research images.
+  - id: science
+    name: Science journals (AAAS)
+    rank: null
+    urls:
+      - https://www.science.org/content/page/science-journals-editorial-policies
+      - https://www.science.org/cms/asset/90bfdd0e-1aa3-474a-8421-041efd87cb4e/sept26_science_journals_guidelines_ai_use.pdf
+    policy_date: "AI usage guidelines dated September 2026 (file name)"
+    # Declaration rule for each A7 purpose code, from the Science journals' AI usage guidelines table.
+    a7_rules:
+      language_editing: "no declaration"
+      translation: "Acknowledgements, with model name and version"
+      drafting_text: "Acknowledgements, with model name and version"
+      illustrative_figures: "not allowed without the editors' permission"
+      data_formatting: "no declaration"
+      data_visualisation: "Acknowledgements, with model name and version"
+      code_formatting: "no declaration, as long as functionality is unchanged"
+      reference_gathering: "no declaration"
+      literature_search: "no declaration"
+      data_analysis: "Methods, with model name and version"
+      code_generation: "Methods, with model name and version"
+    summary: >
+      AI use must be noted in the cover letter and in the Methods or Acknowledgements. Writing or editing code that changes
+      functionality, and data generation or analysis, must be described in the Methods with model name and version.
+      Drafting or translating text, and editing visualizations of data, go in the Acknowledgements with model name and
+      version. Literature searches, language polishing and code formatting need no declaration. AI-generated images are
+      not allowed without the editors' permission.
+  - id: pnas
+    name: PNAS
+    rank: null
+    urls:
+      - https://www.pnas.org/author-center/editorial-and-journal-policies
+    policy_date: "not shown"
+    summary: >
+      Any AI use in the research process must be disclosed in Materials and Methods (or Acknowledgements if there is no
+      Methods section), with the tool's name and specific model or version. Authors must fact-check all AI output. AI may
+      help with illustrative images only, described in the figure legend; never with images of research data. Survey
+      studies must describe in plain language how AI was used in the survey workflow, with human oversight and validation,
+      and report the share of any synthetic respondents.
+
+# One row per requirement. Columns follow the publisher ids above.
+requirements:
+  - id: no_ai_author
+    requirement: AI is not listed as an author or cited as the author of a source
+    acorn: "Disclosure tips"
+    status: covered
+    cells: {elsevier: required, springer_nature: required, taylor_francis: required, wiley: required, sage: required, science: required, pnas: required}
+  - id: tool_name
+    requirement: Name every AI tool or model used
+    acorn: "A1, A2, A7"
+    status: covered
+    cells: {elsevier: required, springer_nature: required, taylor_francis: required, wiley: required, sage: required, science: required, pnas: required}
+  - id: version
+    requirement: Exact version or model ID
+    acorn: "A1 (version ID), A7"
+    status: covered
+    cells: {elsevier: "required: for research use", springer_nature: "required: model", taylor_francis: required, wiley: required, sage: "required: model", science: required, pnas: required}
+  - id: provider
+    requirement: Developer or provider of the tool
+    acorn: "A1 (provider), A7"
+    status: covered
+    cells: {elsevier: "required: for research use", springer_nature: not_mentioned, taylor_francis: not_mentioned, wiley: not_mentioned, sage: not_mentioned, science: not_mentioned, pnas: not_mentioned}
+  - id: dates
+    requirement: Date or period of use
+    acorn: "A1 (dates of access), A7"
+    status: covered
+    cells: {elsevier: not_mentioned, springer_nature: not_mentioned, taylor_francis: not_mentioned, wiley: required, sage: not_mentioned, science: not_mentioned, pnas: not_mentioned}
+  - id: purpose
+    requirement: What the AI was used for
+    acorn: "B1, C1, A7"
+    status: covered
+    cells: {elsevier: required, springer_nature: required, taylor_francis: required, wiley: required, sage: required, science: required, pnas: required}
+  - id: reason
+    requirement: Why AI was used
+    acorn: "B1 (goal), C1 (tasks); stated in the wording"
+    status: covered
+    cells: {elsevier: "required: for manuscript preparation", springer_nature: not_mentioned, taylor_francis: required, wiley: not_mentioned, sage: not_mentioned, science: not_mentioned, pnas: not_mentioned}
+  - id: oversight
+    requirement: Extent of human oversight and the authors' role in directing the AI
+    acorn: "A3, A4, D1"
+    status: covered
+    cells: {elsevier: required, springer_nature: required, taylor_francis: required, wiley: required, sage: not_mentioned, science: not_mentioned, pnas: "required: for surveys"}
+  - id: verification
+    requirement: Authors verified AI outputs (accuracy, references, bias) and how
+    acorn: "E1, E3"
+    status: covered
+    cells: {elsevier: required, springer_nature: "required: validation steps for analytical use", taylor_francis: required, wiley: required, sage: required, science: required, pnas: required}
+  - id: methods_section
+    requirement: AI used in the research (design, code, analysis) described in the Methods
+    acorn: "Methods template"
+    status: covered
+    cells: {elsevier: required, springer_nature: required, taylor_francis: "required: in an AI usage statement", wiley: required, sage: "required: Methods or Acknowledgements", science: required, pnas: required}
+  - id: writing_declaration
+    requirement: AI help with writing or translation declared (Acknowledgements or a separate declaration)
+    acorn: "C1 writing roles, A7; writing declaration and Acknowledgements templates"
+    status: covered
+    cells: {elsevier: "required: separate AI declaration section", springer_nature: required, taylor_francis: required, wiley: "required: Acknowledgements", sage: "required: for generative use", science: "required: Acknowledgements", pnas: "required: Methods or Acknowledgements"}
+  - id: exemptions
+    requirement: Grammar, spelling and language polishing exempt from disclosure
+    acorn: "A7 guidance"
+    status: covered
+    cells: {elsevier: exempt, springer_nature: "not_exempt: describe even language editing", taylor_francis: not_mentioned, wiley: exempt, sage: exempt, science: exempt, pnas: not_mentioned}
+  - id: cover_letter
+    requirement: AI use noted in the cover letter
+    acorn: "Cover letter template"
+    status: covered
+    cells: {elsevier: not_mentioned, springer_nature: not_mentioned, taylor_francis: not_mentioned, wiley: not_mentioned, sage: not_mentioned, science: required, pnas: not_mentioned}
+  - id: figure_legend
+    requirement: AI-generated or AI-edited figures disclosed in their legend
+    acorn: "A7, C1 (visualization); figure legend template"
+    status: covered
+    cells: {elsevier: required, springer_nature: required, taylor_francis: not_mentioned, wiley: required, sage: "required: in Methods or Acknowledgements; cite the tool for representative images", science: "not_allowed: without editors' permission", pnas: required}
+  - id: research_images
+    requirement: No AI creation or alteration of images that are research data
+    acorn: "Skill policy check (outside ACORN's reporting scope)"
+    status: skill_check
+    cells: {elsevier: not_allowed, springer_nature: not_allowed, taylor_francis: not_allowed, wiley: not_allowed, sage: not_allowed, science: not_allowed, pnas: not_allowed}
+  - id: privacy
+    requirement: How personal or sensitive data were protected
+    acorn: "G1, G2, G3"
+    status: covered
+    cells: {elsevier: required, springer_nature: required, taylor_francis: recommended, wiley: "required: in the Methods", sage: not_mentioned, science: not_mentioned, pnas: not_mentioned}
+  - id: tool_terms
+    requirement: Tool's terms checked (no training on inputs, no claims on outputs)
+    acorn: "G2 (data retention and training terms); the skill reminds authors to check ownership of outputs"
+    status: skill_check
+    cells: {elsevier: required, springer_nature: not_mentioned, taylor_francis: required, wiley: required, sage: not_mentioned, science: not_mentioned, pnas: not_mentioned}
+  - id: documentation
+    requirement: Documentation available on request (prompts, settings, code)
+    acorn: "B3, A5, A6, F1, F2"
+    status: covered
+    cells: {elsevier: recommended, springer_nature: recommended, taylor_francis: not_mentioned, wiley: recommended, sage: not_mentioned, science: not_mentioned, pnas: not_mentioned}
+  - id: synthetic_data
+    requirement: Synthetic data or AI participants disclosed (or not allowed)
+    acorn: "C1 (data curation), D1; skill policy check"
+    status: skill_check
+    cells: {elsevier: "not_allowed: fabricating data", springer_nature: "not_allowed: fabricating data", taylor_francis: "not_allowed: to replace missing data without robust methods", wiley: not_mentioned, sage: "not_allowed: AI interviews instead of participants", science: "required: data generation in Methods", pnas: "required: share of synthetic respondents"}

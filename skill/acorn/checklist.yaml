@@ -1,0 +1,580 @@
+# ACORN (AI CO-scientist Reporting Norms): single source of truth.
+# Every other format (LaTeX, RMarkdown, Word, website, agent skill) is generated from this file.
+# Edit content here only.
+#
+# Item fields:
+#   id                 stable identifier, never reused once released (e.g. "A3")
+#   tier               core (always report) | optional (report when relevant)
+#   introduced_in      the first released version that contained this item (for comparing reports across versions)
+#   title              short label
+#   question           what the reporter answers
+#   response           expected answer shape (see response_types below)
+#   guidance           what a good answer contains, for humans
+#   agent_instructions how a coding agent should find or fill this answer, and when to ask the human
+#   guide_llm          matching GUIDE-LLM item id(s), if any (Feuerriegel et al., 2026, Nat Hum Behav)
+#   origin             where the item came from in the drafting process (original field list or refinement R#)
+
+meta:
+  name: ACORN
+  full_name: AI CO-scientist Reporting Norms
+  version: 0.1.0
+  date: 2026-11-26
+  scope: >
+    Reporting how AI coding agents (autonomous or semi-autonomous LLM-based agents that read,
+    write and run code) assisted any stage of an empirical or formal research project, in any discipline.
+  related_work:
+    - "Feuerriegel, S. et al. (2026). A reporting checklist for large language models in behavioural science (GUIDE-LLM). Nature Human Behaviour. doi:10.1038/s41562-026-02492-7"
+
+# Every answer carries a source tag (refinement R10).
+answer_source:
+  description: Who provided this answer.
+  options:
+    - {value: agent, label: "Agent (from its own records, settings or project files)"}
+    - {value: human, label: "Human"}
+    - {value: agent_verified, label: "Agent, checked by a human"}
+    - {value: unknown, label: "Unknown"}
+
+# Codes for answers that are missing, so analyses can tell the reasons apart.
+# They can be used in place of any answer or field value.
+missing_values:
+  - {value: unknown, label: "Unknown: nobody could determine it"}
+  - {value: not_applicable, label: "Not applicable to this project"}
+  - {value: not_disclosed, label: "Not disclosed: exists but is not public (e.g. model size)"}
+  - {value: not_available, label: "Not available: the interface or records do not provide it"}
+
+# Field values are text unless a field sets value_type: integer or number.
+value_types: [text, integer, number]
+
+response_types:
+  text: Free text.
+  single_choice: Exactly one of the listed options, plus an optional note.
+  multi_choice: Any of the listed options, plus an optional note.
+  record: A set of named fields.
+  table: Zero or more rows with the listed columns.
+  location: A persistent link (DOI, repository URL, archive) or a reason it is not shared.
+
+# Ready-to-paste wording for disclosing AI agent use in a manuscript.
+# {placeholders} are filled from a completed report by render_report.py (used by the skill),
+# and shown as [bracketed examples] in the blank formats and on the website.
+# {version} is always filled with meta.version.
+disclosure:
+  intro: >
+    Copy this wording into your manuscript. Replace each part in square brackets, or let the ACORN skill
+    fill it in from your completed report. Publishers want AI use in the research described in the Methods,
+    and writing or translation help declared in the Acknowledgements or a separate AI declaration; some also
+    ask for a note in the cover letter and in the legend of any AI-generated or AI-edited figure. Check your
+    target journal's policy (see the publisher policy table) and use the pieces it asks for.
+  advice:
+    - "Cite the exact ACORN version you used, as the wording does, so readers know which items you answered."
+    - "Deposit the completed report (acorn-report.yaml and acorn-report.md) with a persistent identifier, such as a Zenodo or OSF DOI, and link to that DOI rather than to a web page or repository URL that may change."
+    - "Cite ACORN itself in your references (see How to cite on the ACORN website)."
+    - "Do not list an AI agent as an author, and do not cite an AI tool as the author of a source. Every major publisher forbids it."
+    - "Disclose every AI tool, not only the coding agent (item A7), and name each with its exact version."
+  placeholders:
+    agents: "agent product and model with its exact version, e.g. Example Agent CLI 2.3 with example-model-2026-09-01 (Example Provider)"
+    tasks: "tasks, e.g. data cleaning, analysis code and figures"
+    research_tasks: "research tasks, e.g. data cleaning and writing the analysis code"
+    supervision: "human oversight, e.g. The authors approved each action of the agent before it ran."
+    verification: "how outputs were checked, e.g. The authors read all agent-written code line by line and re-ran the main analyses independently."
+    writing_tools: "AI tools used for writing, with versions"
+    writing_tasks: "writing tasks, e.g. editing the language of the Introduction and translating the abstract"
+    figure_tools: "AI tool and version, and what it did to the figure"
+    location: "URL/DOI"
+  # requires: in a filled report, the template is left out when this value is empty (e.g. no writing help recorded).
+  templates:
+    - id: methods
+      label: Methods
+      where: Methods section (or a subsection such as "Use of AI tools"). Required by all major publishers for AI used in the research, including code and analysis.
+      text: >-
+        AI coding agents assisted with this research. We used {agents} for {research_tasks}. {supervision} {verification}
+        The authors take full responsibility for all AI-assisted outputs. The use of AI agents, including which
+        decisions were made by the agents and which by the authors, is documented in the completed ACORN
+        checklist (v{version}), available at {location}.
+    - id: acknowledgements_full
+      label: Acknowledgements (full)
+      where: Acknowledgements
+      text: >-
+        AI coding agents assisted with parts of this work, including {tasks}. Their use is documented in the
+        completed ACORN checklist (v{version}), available at {location}. The authors reviewed all AI-assisted
+        outputs and take full responsibility for the content.
+    - id: acknowledgements_short
+      label: Acknowledgements (short)
+      where: Acknowledgements, when space is limited and the Methods already describe the AI use
+      text: >-
+        AI tools were used in this work and are reported in the ACORN checklist (v{version}): {location}.
+    - id: writing_declaration
+      label: AI declaration for writing assistance
+      where: >-
+        A separate declaration where the journal asks for one (e.g. Elsevier's "Declaration of generative AI and AI-assisted
+        technologies in the manuscript preparation process"), otherwise the Acknowledgements. Needed when AI drafted,
+        restructured or translated text; basic grammar and spelling checks are exempt.
+      requires: writing_tasks
+      text: >-
+        During the preparation of this work, the authors used {writing_tools} for {writing_tasks}. After using these
+        tools, the authors reviewed and edited the content as needed and take full responsibility for the content of
+        the published article.
+    - id: figure_legend
+      label: Figure legend
+      where: The legend of each figure or image that AI generated or edited (required by Elsevier, Wiley, PNAS and Springer Nature; Science journals need the editors' permission first). Not needed for plots that code draws from your data, which the Methods cover.
+      requires: figure_tools
+      text: >-
+        This figure was created or edited with the help of {figure_tools}. The authors checked that it accurately
+        represents the underlying data or concept.
+    - id: cover_letter
+      label: Cover letter
+      where: Cover letter to the editor (required by Science journals, and useful for any journal)
+      text: >-
+        AI coding agents were used in this research and are described in the Methods. Their use is documented in full
+        in the completed ACORN checklist (v{version}), available at {location}.
+    - id: availability
+      label: Data and code availability
+      where: Data, code or materials availability statement
+      text: >-
+        The completed ACORN report on the use of AI coding agents (v{version}) is available with the
+        replication materials at {location}.
+
+sections:
+
+  # -------------------------------------------------------------------------
+  - id: A
+    title: Agent, interface and supervision
+    purpose: Identify exactly which agents were used, how they were accessed, what they could do, and how closely humans supervised them.
+    items:
+
+      - id: A1
+        tier: core
+        introduced_in: "0.1.0"
+        title: Models
+        question: Which model(s) powered the agent(s)? List every model used, including any change of model during the project.
+        response:
+          type: table
+          columns:
+            - {name: model_name, label: "Model name"}
+            - {name: provider, label: "Provider"}
+            - {name: version_id, label: "Exact version or ID string"}
+            - {name: size, label: "Size (parameters), if disclosed", required: false}
+            - {name: access_dates, label: "Dates of access"}
+            - {name: source_link, label: "Source link (model card or docs)"}
+            - {name: used_for, label: "What it was used for"}
+        guidance: >
+          Report the exact identifier the interface reports (e.g. a dated model ID), not a marketing name alone.
+          Use not_disclosed for size when the provider does not publish it. If the model changed partway
+          through, list each model and when it was used.
+        agent_instructions: >
+          Report your own model ID from your system or session metadata. Check session logs or history for
+          earlier sessions on this project that may have used other models. Ask the human about any sessions
+          you cannot see.
+        guide_llm: [B1]
+        origin: "Field 1; R8 (model changes); R11 (size optional)"
+
+      - id: A2
+        tier: core
+        introduced_in: "0.1.0"
+        title: Agent product and interface
+        question: Which agent product and interface were used to run the agent?
+        response:
+          type: record
+          fields:
+            - {name: agent_product, label: "Agent product and version (e.g. CLI tool, IDE extension, web app, custom framework)"}
+            - {name: interface, label: "Interface", options: [command_line, ide_extension, web_app, desktop_app, api_custom_harness, notebook, other]}
+            - {name: execution_environment, label: "Where the agent's code ran (local machine, cloud sandbox, HPC, other)"}
+        guidance: The agent product matters as much as the model, because it sets the tools, permissions and system prompt.
+        agent_instructions: Report the harness or product you are running in and its version if available, and where your commands execute.
+        guide_llm: [B2]
+        origin: "Field 1"
+
+      - id: A3
+        tier: core
+        introduced_in: "0.1.0"
+        title: Level of human supervision
+        question: How closely did humans supervise the agent's actions? Choose the level that best describes most of the work, and note exceptions.
+        response:
+          type: single_choice
+          options:
+            - {value: "0", label: "Level 0: Human ran every step; the agent only suggested code or text"}
+            - {value: "1", label: "Level 1: Agent proposed actions; a human approved each one before it ran"}
+            - {value: "2", label: "Level 2: Agent acted within default permissions; a human approved risky actions"}
+            - {value: "3", label: "Level 3: Agent ran largely unattended, or with permission checks skipped"}
+        guidance: If different stages ran at different levels (e.g. Level 1 for analysis, Level 3 for figure formatting), say so in the note.
+        agent_instructions: >
+          Infer the level from your permission mode and settings (e.g. whether approvals were required or skipped).
+          Ask the human to confirm, since they may have changed modes across sessions.
+        guide_llm: [A2]
+        origin: "Field 1; R4"
+
+      - id: A4
+        tier: core
+        introduced_in: "0.1.0"
+        title: Permissions
+        question: Which permissions did the agent have?
+        response:
+          type: multi_choice
+          options:
+            - {value: read_files, label: "Read project files"}
+            - {value: write_files, label: "Create or edit files"}
+            - {value: run_code, label: "Run code or shell commands"}
+            - {value: install_packages, label: "Install software or packages"}
+            - {value: internet, label: "Access the internet"}
+            - {value: external_services, label: "Act on external services (e.g. push to repositories, send messages, query databases)"}
+            - {value: skip_permissions, label: "All permission checks skipped"}
+        guidance: Report what the agent was allowed to do, whether or not it used every permission.
+        agent_instructions: Read your permission settings and allow/deny lists. Report any permission-skipping flags that were used.
+        origin: "Field 1"
+
+      - id: A5
+        tier: core
+        introduced_in: "0.1.0"
+        title: Context, tools and aids
+        question: What context, tools and aids were available to the agent?
+        response:
+          type: record
+          fields:
+            - {name: instruction_files, label: "Project instruction or memory files (e.g. AGENTS.md, CLAUDE.md), and whether they are shared"}
+            - {name: skills, label: "Skills, plugins or custom commands"}
+            - {name: tool_servers, label: "Connected tools or servers (e.g. MCP servers, databases, APIs)"}
+            - {name: web_access, label: "Web search or browsing"}
+            - {name: subagents, label: "Use of subagents or multiple cooperating agents"}
+            - {name: other_aids, label: "Other aids (e.g. this checklist's skill, templates, retrieval systems)"}
+        guidance: These shape the agent's behaviour as much as the model does. Share instruction files in the replication package where possible.
+        agent_instructions: List the instruction files, skills, tools and servers loaded in your session(s). Note any you know existed in sessions you cannot see.
+        guide_llm: [C2]
+        origin: "Field 1; R8"
+
+      - id: A6
+        tier: optional
+        introduced_in: "0.1.0"
+        title: Model settings
+        question: Were any non-default model settings used (e.g. temperature, reasoning effort, context length, seed)?
+        response: {type: text}
+        guidance: Most agent products do not expose these. Write "defaults" if nothing was changed.
+        agent_instructions: Report any settings visible in your configuration, otherwise write "defaults (not exposed by the interface)".
+        guide_llm: [B3]
+        origin: "GUIDE-LLM alignment (R1)"
+
+      - id: A7
+        tier: core
+        introduced_in: "0.1.0"
+        title: Other AI tools
+        question: >
+          Were any other AI tools used in the project or the manuscript, besides the agent(s) in A1 (e.g. a chatbot for
+          language editing or translation, an AI literature search tool, an image generator)?
+        response:
+          type: table
+          columns:
+            - {name: tool, label: "Tool or model name"}
+            - {name: version_id, label: "Version or ID"}
+            - {name: provider, label: "Provider"}
+            - {name: purpose, label: "Purpose (codes follow the STM classification, see guidance)", options: [language_editing, translation, drafting_text, illustrative_figures, data_formatting, data_visualisation, code_formatting, reference_gathering, literature_search, data_analysis, code_generation, other]}
+            - {name: where_used, label: "Where it was used (manuscript sections, figures, analysis steps)"}
+            - {name: dates, label: "Dates of use"}
+        guidance: >
+          Publishers require every AI tool to be disclosed, not only coding agents, so that the disclosure statement is complete.
+          Leave the table empty if no other tools were used. Spelling and grammar checkers built into word processors do not need listing.
+          Purpose codes for manuscript preparation follow the STM classification of AI use in manuscript preparation (2025):
+          language_editing (STM 1), translation (2), drafting_text (3), illustrative_figures (4: illustrations not based on data),
+          data_formatting (5), data_visualisation (6: graphs or tables of research data), code_formatting (7: no change in what the
+          code does), reference_gathering (8). Uses in the research itself, which STM does not cover, are literature_search,
+          data_analysis and code_generation. AI content presented as real research data or results (STM 9) is prohibited by publishers.
+          List any AI-generated or AI-edited figure or image here, even if the agent made it, since most publishers require a
+          disclosure in that figure's legend.
+        agent_instructions: >
+          List any AI-generated or AI-edited figures you know of. Ask the human which other AI tools they or coauthors used,
+          for what, and where, and whether any figure or image was made or edited with AI.
+        origin: "Publisher AI policy review (2026-11)"
+
+  # -------------------------------------------------------------------------
+  - id: B
+    title: Human goals and instructions
+    purpose: Record what the humans asked the agent to do, so that its actions can be judged against its instructions.
+    items:
+
+      - id: B1
+        tier: core
+        introduced_in: "0.1.0"
+        title: Research goal given to the agent
+        question: What overall goal did the humans give the agent?
+        response: {type: text}
+        guidance: One to three sentences in the researchers' words, e.g. "Clean the survey data and run the pre-registered models".
+        agent_instructions: Summarise the goals stated in the human's instructions across sessions, quoting where possible. Ask the human to confirm.
+        origin: "Field 3"
+
+      - id: B2
+        tier: core
+        introduced_in: "0.1.0"
+        title: Key instructions
+        question: What were the key instructions that shaped the work (e.g. constraints, preferred methods, things the agent was told not to do)?
+        response: {type: text}
+        guidance: Summarise instructions that changed what the agent did. Full prompts belong in the transcripts, if you deposit them (B3).
+        agent_instructions: List instructions from the human and instruction files that directly constrained analytic or design choices.
+        guide_llm: [C1]
+        origin: "Field 3"
+
+      - id: B3
+        tier: optional
+        introduced_in: "0.1.0"
+        title: Transcripts
+        question: Are the conversation transcripts (anonymised where needed) publicly deposited, and where?
+        response:
+          type: location
+          fields:
+            - {name: deposited, label: "Deposited", options: [all, partial, "no"]}
+            - {name: location, label: "Persistent link"}
+            - {name: anonymisation, label: "What was removed or anonymised"}
+            - {name: reason_if_not, label: "Reason if not deposited"}
+        guidance: Full transcripts are the strongest record of who decided what. If they cannot be shared, explain why and what is shared instead.
+        agent_instructions: Tell the human where your session logs are stored and how to export them. Never deposit them yourself without explicit approval, and flag any personal data they contain.
+        guide_llm: [optional:transcripts]
+        origin: "Field 3"
+
+  # -------------------------------------------------------------------------
+  - id: C
+    title: Agent contributions
+    purpose: Record which parts of the research the agent contributed to, and which ideas came from the agent versus the humans.
+    items:
+
+      - id: C1
+        tier: core
+        introduced_in: "0.1.0"
+        title: Contributions by role
+        question: For each research role, how much did the agent contribute?
+        response:
+          type: table
+          rows:
+            - {value: conceptualization, label: "Conceptualization (research questions, hypotheses)"}
+            - {value: literature, label: "Literature search and review"}
+            - {value: methodology, label: "Methodology (design, analysis plan)"}
+            - {value: data_curation, label: "Data curation (collection, cleaning, merging)"}
+            - {value: formal_analysis, label: "Formal analysis (statistics, models)"}
+            - {value: derivation, label: "Derivations, proofs or theory"}
+            - {value: simulation, label: "Simulation or computational modelling"}
+            - {value: software, label: "Software (writing code, packages, pipelines)"}
+            - {value: validation, label: "Validation (testing, checking results)"}
+            - {value: visualization, label: "Visualization (figures, tables)"}
+            - {value: writing_draft, label: "Writing the paper: original draft"}
+            - {value: writing_review, label: "Writing the paper: review and editing"}
+            - {value: references, label: "References and citations"}
+            - {value: other, label: "Other (specify)"}
+          columns:
+            - {name: level, label: "Agent contribution", options: [none, assisted, led]}
+            - {name: description, label: "What the agent did"}
+        guidance: >
+          Roles follow the CRediT contributor taxonomy, with additions for literature, derivations, simulation and references.
+          "Assisted" means a human led and the agent helped; "led" means the agent did most of the work.
+          The two writing roles cover the text of the paper itself: use "original draft" when text the agent wrote appears in the paper,
+          and "review and editing" when the agent revised the paper's text. Text the agent wrote for anything else (documentation, study materials,
+          code comments, the research product itself) goes under the role it served, or under Other.
+        agent_instructions: >
+          Fill this from your session history. Mark roles you have no record of as "unknown" and ask the human.
+          Count writing only if it is, or will be, in the paper; ask the human whether text you drafted for the paper, such as disclosure wording, was used.
+        guide_llm: [A1]
+        origin: "Field 4; R7"
+
+      - id: C2
+        tier: optional
+        introduced_in: "0.1.0"
+        title: Origin of ideas
+        question: Which substantive ideas (hypotheses, research questions, analytic approaches, interpretations) came from the agent, and which from humans?
+        response:
+          type: table
+          columns:
+            - {name: idea, label: "Idea"}
+            - {name: originated_by, label: "Originated by", options: [human, agent, joint, unknown]}
+            - {name: adopted, label: "Adopted in the final work?", options: ["yes", "no", partly]}
+        guidance: List ideas that shaped the paper. Ideas from meetings or earlier sessions often need the humans to fill in.
+        agent_instructions: List ideas you proposed that appear in the final work, and ideas the human gave you. Ask the human about anything outside your sessions.
+        origin: "Field 4"
+
+  # -------------------------------------------------------------------------
+  - id: D
+    title: Decision log
+    purpose: Record who made the key decisions and why. Agents make many decisions quickly and confidently; readers need to know which were made by humans and which by agents.
+    items:
+
+      - id: D1
+        tier: core
+        introduced_in: "0.1.0"
+        title: Key decisions
+        question: List the decisions that could change the results or their interpretation, and who proposed and approved each one.
+        response:
+          type: table
+          columns:
+            - {name: decision, label: "Decision (e.g. exclusion rule, model specification, outlier handling, deviation from plan)"}
+            - {name: proposed_by, label: "Proposed by", options: [human, agent, unknown]}
+            - {name: approved_by, label: "Approved by", options: [human, agent_autonomous, unknown]}
+            - {name: rationale, label: "Rationale"}
+            - {name: alternatives, label: "Alternatives considered"}
+            - {name: where_documented, label: "Where documented (file, commit, transcript)"}
+        guidance: >
+          Include every decision a careful reviewer would ask about. "Approved by: agent_autonomous" means
+          the agent made and acted on the decision without a human approving it.
+        agent_instructions: >
+          Go through your history and list each choice that affected data, analysis or interpretation. Be explicit
+          about decisions you made without asking. Ask the human to confirm proposer and approver for each row.
+        origin: "R2"
+
+  # -------------------------------------------------------------------------
+  - id: E
+    title: Verification and research integrity
+    purpose: Record how agent outputs were checked, how flexible the analysis was, and what went wrong.
+    items:
+
+      - id: E1
+        tier: core
+        introduced_in: "0.1.0"
+        title: Human verification of agent outputs
+        question: How did humans verify the agent's outputs?
+        response:
+          type: table
+          columns:
+            - {name: output, label: "Output (e.g. cleaning script, main model, figure 2, manuscript section)"}
+            - {name: method, label: "Verification method", options: [read_line_by_line, rerun_independently, tests, manual_calculation, spot_check, not_verified]}
+            - {name: notes, label: "Notes"}
+        guidance: Supervision during the session (A3) is not the same as checking the outputs afterwards. Report both.
+        agent_instructions: List the outputs you produced. Record checks you saw happen (e.g. the human asked you to run tests). Ask the human how they verified the rest.
+        guide_llm: [E1]
+        origin: "R3"
+
+      - id: E2
+        tier: core
+        introduced_in: "0.1.0"
+        title: Pre-registration and analytic flexibility
+        question: Was the study pre-registered, and how much did the agent explore alternative analyses?
+        response:
+          type: record
+          fields:
+            - {name: preregistered, label: "Pre-registered", options: ["yes", "no", not_applicable]}
+            - {name: prereg_link, label: "Link to pre-registration"}
+            - {name: saw_outcomes_before_plan, label: "Did the agent see outcome data before the analysis plan was fixed?", options: ["yes", "no", unknown]}
+            - {name: alternatives_run, label: "Approximate number of alternative analyses or specifications the agent ran", value_type: integer}
+            - {name: all_reported, label: "Are all alternatives reported (e.g. in supplementary material)?", options: ["yes", "no", partly]}
+            - {name: deviations, label: "Deviations from the pre-registration and who decided them"}
+        guidance: Agents can run many specifications quickly. Report them so readers can judge the risk of undisclosed analytic flexibility.
+        agent_instructions: Count distinct model specifications or analysis variants you ran. Report whether you accessed outcome data before the plan was written.
+        guide_llm: [optional:comparison]
+        origin: "R5"
+
+      - id: E3
+        tier: optional
+        introduced_in: "0.1.0"
+        title: Errors and corrections
+        question: What notable agent errors were found, and how were they caught?
+        response:
+          type: table
+          columns:
+            - {name: error, label: "Error (e.g. wrong code, invented function or package, invented citation, silent data change)"}
+            - {name: caught_by, label: "Caught by", options: [human, agent, test, reviewer]}
+            - {name: fix, label: "How it was fixed"}
+        guidance: Reporting errors helps readers judge reliability, and helps the field learn where agents fail.
+        agent_instructions: List errors you made that were later corrected, including ones you corrected yourself.
+        origin: "R6"
+
+  # -------------------------------------------------------------------------
+  - id: F
+    title: Reproducibility
+    purpose: Give an independent researcher or agent what they need to reproduce the analyses and results.
+    items:
+
+      - id: F1
+        tier: core
+        introduced_in: "0.1.0"
+        title: Code and materials
+        question: Where are the code, scripts and materials produced with the agent deposited?
+        response: {type: location}
+        guidance: Use a persistent archive (e.g. a Zenodo DOI or OSF), not only a repository URL.
+        agent_instructions: Report the repository and commit for the final analysis code.
+        guide_llm: [F1]
+        origin: "Field 2"
+
+      - id: F2
+        tier: core
+        introduced_in: "0.1.0"
+        title: Computational environment
+        question: What languages, packages and versions were used, and where is the exact environment specified?
+        response:
+          type: record
+          fields:
+            - {name: languages, label: "Languages and versions"}
+            - {name: packages, label: "Key packages and versions"}
+            - {name: environment_file, label: "Environment specification file (e.g. renv.lock, uv.lock, environment.yml, Dockerfile, Manifest.toml)"}
+            - {name: os_hardware, label: "Operating system and relevant hardware"}
+            - {name: session_info, label: "Session information deposited (e.g. sessionInfo(), pip freeze) and where"}
+        guidance: Pin exact versions in a lock file and deposit it with the code.
+        agent_instructions: >
+          Generate this from the environment (e.g. run the language's version and package listing commands)
+          and point to the lock file. Create one only with the human's approval.
+        origin: "Field 2"
+
+      - id: F3
+        tier: optional
+        introduced_in: "0.1.0"
+        title: Token use and cost
+        question: Approximately how many tokens were used, and what did agent use cost?
+        response:
+          type: record
+          fields:
+            - {name: total_tokens, label: "Approximate total tokens (input and output)", value_type: integer}
+            - {name: cost, label: "Approximate cost", value_type: number}
+            - {name: currency, label: "Currency of the cost (e.g. USD, GBP)"}
+            - {name: coverage, label: "Do these figures cover all agent sessions in the project?", options: [all_sessions, some_sessions, unknown]}
+        guidance: Report approximate figures if available. Use "not_available" if the interface does not show them, or the cost of a flat subscription if that is all you know.
+        agent_instructions: Report usage figures if your interface exposes them, and say whether they cover all sessions.
+        guide_llm: [optional:compute]
+        origin: "Field 2; R11"
+
+  # -------------------------------------------------------------------------
+  - id: G
+    title: Data protection and ethics
+    purpose: Record what data the agent saw, where that data went, and how personal or sensitive information was protected.
+    items:
+
+      - id: G1
+        tier: core
+        introduced_in: "0.1.0"
+        title: Data the agent could access
+        question: What level of data access did the agent have?
+        response:
+          type: single_choice
+          options:
+            - {value: none, label: "No research data"}
+            - {value: schema, label: "Variable names, schema or codebook only"}
+            - {value: synthetic, label: "Synthetic or simulated data only"}
+            - {value: sample, label: "A sample of the data"}
+            - {value: full, label: "The full dataset"}
+        guidance: Note in the note field whether the data contained personal or sensitive information.
+        agent_instructions: Report which data files you read or loaded.
+        guide_llm: [D1]
+        origin: "Field 5; R9"
+
+      - id: G2
+        tier: core
+        introduced_in: "0.1.0"
+        title: Protection of personal or sensitive data
+        question: How was personal or sensitive information protected?
+        response:
+          type: record
+          fields:
+            - {name: anonymised_before, label: "Anonymised or pseudonymised before the agent saw it?", options: ["yes", "no", not_applicable]}
+            - {name: sent_to_provider, label: "Was data sent to the model provider's servers?", options: ["yes", "no", unknown]}
+            - {name: provider_terms, label: "Provider's data retention and training terms that applied (e.g. zero retention, no training on data)"}
+            - {name: other_safeguards, label: "Other safeguards (e.g. local model, secure environment)"}
+        guidance: Where the data went and who keeps it matters as much as whether it was anonymised.
+        agent_instructions: Report whether you run locally or via a remote API. Ask the human which provider terms or agreements applied.
+        guide_llm: [D1]
+        origin: "Field 5; R9"
+
+      - id: G3
+        tier: core
+        introduced_in: "0.1.0"
+        title: Ethics approval
+        question: Did the ethics approval or data agreement cover processing the data with an AI agent?
+        response:
+          type: single_choice
+          options:
+            - {value: "yes", label: "Yes, explicitly"}
+            - {value: "no", label: "No"}
+            - {value: not_required, label: "Not required (e.g. no human-subjects data)"}
+            - {value: unknown, label: "Unknown"}
+        guidance: Name the approving body and reference number where relevant.
+        agent_instructions: Ask the human; you cannot know this.
+        guide_llm: [optional:ethics]
+        origin: "R9"

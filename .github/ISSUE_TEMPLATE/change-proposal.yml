@@ -1,0 +1,86 @@
+# Generated from checklist/checklist.yaml by scripts/build_formats.py. Do not edit by hand.
+name: Propose a change to ACORN
+description: Suggest a change to an item, a new item, or a change to the checklist as a whole.
+title: '[Item] '
+labels:
+- proposal
+body:
+- type: markdown
+  attributes:
+    value: Thank you for helping improve ACORN. Proposals are public and are reviewed by the research team (see the Contribute
+      page on the website for how decisions are made).
+- type: dropdown
+  id: item
+  attributes:
+    label: Which item does this concern?
+    options:
+    - A1. Models
+    - A2. Agent product and interface
+    - A3. Level of human supervision
+    - A4. Permissions
+    - A5. Context, tools and aids
+    - A6. Model settings
+    - A7. Other AI tools
+    - B1. Research goal given to the agent
+    - B2. Key instructions
+    - B3. Transcripts
+    - C1. Contributions by role
+    - C2. Origin of ideas
+    - D1. Key decisions
+    - E1. Human verification of agent outputs
+    - E2. Pre-registration and analytic flexibility
+    - E3. Errors and corrections
+    - F1. Code and materials
+    - F2. Computational environment
+    - F3. Token use and cost
+    - G1. Data the agent could access
+    - G2. Protection of personal or sensitive data
+    - G3. Ethics approval
+    - New item
+    - Whole checklist or structure
+  validations:
+    required: true
+- type: dropdown
+  id: change_type
+  attributes:
+    label: Type of change
+    options:
+    - Clarify wording or guidance
+    - Change what the item asks
+    - Add a new item
+    - Remove or merge an item
+    - Change the answer options
+    - Other
+  validations:
+    required: true
+- type: textarea
+  id: proposal
+  attributes:
+    label: Proposed change
+    description: Give the new wording if you can.
+  validations:
+    required: true
+- type: textarea
+  id: rationale
+  attributes:
+    label: Why is this change needed?
+    description: For example, a situation in your field that the current item does not handle well.
+  validations:
+    required: true
+- type: input
+  id: field
+  attributes:
+    label: Your research field
+    placeholder: e.g. experimental psychology, computational social science, physics
+- type: input
+  id: orcid
+  attributes:
+    label: ORCID iD (optional, for credit)
+    placeholder: 0000-0000-0000-0000
+- type: checkboxes
+  id: terms
+  attributes:
+    label: Acknowledgement
+    options:
+    - label: I understand this proposal and the discussion of it are public.
+      required: true

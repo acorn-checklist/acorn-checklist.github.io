@@ -1,0 +1,244 @@
+# FICTIONAL EXAMPLE of a completed ACORN report, for illustration and testing only.
+acorn_version: 0.1.0
+report:
+  report_id: example-0001
+  title: 'FICTIONAL EXAMPLE: Social norms nudges and vaccination intentions (online experiment)'
+  authors: Example Author A; Example Author B
+  doi: null
+  discipline: experimental psychology
+  report_date: '2026-11-17'
+answers:
+  A1:
+    title: Models
+    answer:
+    - model_name: Example Model
+      provider: Example Provider
+      version_id: example-model-2026-09-01
+      size: not_disclosed
+      access_dates: 2026-09-03 to 2026-10-20
+      source_link: https://example.org/model-card
+      used_for: All agent sessions
+    source: agent
+    note: Earlier sessions confirmed by the authors.
+  A2:
+    title: Agent product and interface
+    answer:
+      agent_product: Example Agent CLI 2.3
+      interface: command_line
+      execution_environment: Local laptop (macOS)
+    source: agent
+    note: null
+  A3:
+    title: Level of human supervision
+    answer: '1'
+    source: agent_verified
+    note: Level 3 (unattended) for figure formatting only.
+  A4:
+    title: Permissions
+    answer:
+    - read_files
+    - write_files
+    - run_code
+    - install_packages
+    source: agent
+    note: null
+  A5:
+    title: Context, tools and aids
+    answer:
+      instruction_files: AGENTS.md (shared in the replication package)
+      skills: ACORN skill
+      tool_servers: none
+      web_access: 'no'
+      subagents: 'no'
+      other_aids: null
+    source: agent
+    note: null
+  A6:
+    title: Model settings
+    answer: defaults (not exposed by the interface)
+    source: agent
+    note: null
+  A7:
+    title: Other AI tools
+    answer:
+    - tool: Example Chat Assistant
+      version_id: example-chat-2026-08
+      provider: Example Provider
+      purpose: language_editing
+      where_used: Introduction and Discussion
+      dates: 2026-10
+    source: human
+    note: null
+  B1:
+    title: Research goal given to the agent
+    answer: Clean the survey data and run the pre-registered mixed-effects models.
+    source: agent_verified
+    note: null
+  B2:
+    title: Key instructions
+    answer: Follow the pre-registration exactly; do not drop participants without asking; use R and lme4.
+    source: agent
+    note: null
+  B3:
+    title: Transcripts
+    answer:
+      deposited: partial
+      location: https://osf.io/xxxxx
+      anonymisation: Participant IDs and file paths removed
+      reason_if_not: Two sessions contained raw data excerpts and were withheld.
+    source: human
+    note: null
+  C1:
+    title: Contributions by role
+    answer:
+      conceptualization:
+        level: none
+        description: null
+      literature:
+        level: none
+        description: null
+      methodology:
+        level: none
+        description: null
+      data_curation:
+        level: led
+        description: Wrote the cleaning script and exclusion checks.
+      formal_analysis:
+        level: assisted
+        description: Implemented the pre-registered models; authors specified them.
+      derivation:
+        level: none
+        description: null
+      simulation:
+        level: none
+        description: null
+      software:
+        level: none
+        description: null
+      validation:
+        level: none
+        description: null
+      visualization:
+        level: led
+        description: Produced figures 1-3.
+      writing_draft:
+        level: none
+        description: null
+      writing_review:
+        level: none
+        description: null
+      references:
+        level: none
+        description: null
+      other:
+        level: none
+        description: null
+    source: agent_verified
+    note: null
+  C2:
+    title: Origin of ideas
+    answer:
+    - idea: Robustness check excluding speeders
+      originated_by: agent
+      adopted: 'yes'
+    - idea: Main hypothesis on descriptive norms
+      originated_by: human
+      adopted: 'yes'
+    source: agent_verified
+    note: null
+  D1:
+    title: Key decisions
+    answer:
+    - decision: Exclude participants failing both attention checks
+      proposed_by: human
+      approved_by: human
+      rationale: Pre-registered
+      alternatives: None
+      where_documented: prereg.pdf
+    - decision: Recode 'prefer not to say' gender as missing
+      proposed_by: agent
+      approved_by: agent_autonomous
+      rationale: Too few cases for a category
+      alternatives: Separate category
+      where_documented: clean.R, commit a1b2c3
+    - decision: Use random slopes for condition by country
+      proposed_by: agent
+      approved_by: human
+      rationale: Model converged; matches design
+      alternatives: Random intercepts only
+      where_documented: Transcript session 4
+    source: agent_verified
+    note: null
+  E1:
+    title: Human verification of agent outputs
+    answer:
+    - output: clean.R
+      method: read_line_by_line
+      notes: null
+    - output: Main model
+      method: rerun_independently
+      notes: Second author re-ran in a fresh environment.
+    source: human
+    note: null
+  E2:
+    title: Pre-registration and analytic flexibility
+    answer:
+      preregistered: 'yes'
+      prereg_link: https://osf.io/xxxxx
+      saw_outcomes_before_plan: 'no'
+      alternatives_run: 6
+      all_reported: 'yes'
+      deviations: Random slopes added (see D1); approved by authors.
+    source: agent_verified
+    note: null
+  E3:
+    title: Errors and corrections
+    answer:
+    - error: Used a non-existent lme4 argument
+      caught_by: test
+      fix: Replaced with control = lmerControl(...)
+    source: agent
+    note: null
+  F1:
+    title: Code and materials
+    answer: https://doi.org/10.5281/zenodo.0000000
+    source: human
+    note: null
+  F2:
+    title: Computational environment
+    answer:
+      languages: R 4.4.1
+      packages: lme4 1.1-35, tidyverse 2.0.0
+      environment_file: renv.lock
+      os_hardware: macOS 15, 16 GB RAM
+      session_info: sessionInfo.txt in the replication package
+    source: agent
+    note: null
+  F3:
+    title: Token use and cost
+    answer:
+      total_tokens: not_available
+      cost: 20
+      currency: USD
+      coverage: all_sessions
+    source: human
+    note: Flat monthly subscription.
+  G1:
+    title: Data the agent could access
+    answer: full
+    source: agent
+    note: Survey data without names or emails.
+  G2:
+    title: Protection of personal or sensitive data
+    answer:
+      anonymised_before: 'yes'
+      sent_to_provider: 'yes'
+      provider_terms: No training on inputs; 30-day retention
+      other_safeguards: null
+    source: human
+    note: null
+  G3:
+    title: Ethics approval
+    answer: 'yes'
+    source: human
+    note: Ethics committee ref. EX-2026-001

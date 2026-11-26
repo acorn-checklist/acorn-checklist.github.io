@@ -1,0 +1,25 @@
+name: Check checklist
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Validate checklist source
+        run: python scripts/validate_checklist.py
+      - name: Skill is up to date
+        run: python scripts/build_skill.py --check
+      - name: Formats are up to date
+        run: python scripts/build_formats.py --check
+      - name: Example reports are valid
+        run: python scripts/acorn_analyze.py examples --out /tmp/acorn-data --strict --allow-todo
+      - name: Website builds
+        run: python scripts/build_site.py _site

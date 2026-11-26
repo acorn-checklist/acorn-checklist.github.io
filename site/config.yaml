@@ -1,0 +1,19 @@
+# Website settings. The repository is read from the GITHUB_REPOSITORY environment
+# variable when the site is built by GitHub Actions, so renaming the repository needs no change here.
+default_repository: acorn-checklist/acorn-checklist.github.io
+
+# Citation shown on the website. Keep in sync with CITATION.cff.
+citation:
+  authors:
+    - {family: Kyrychenko, given: Yara}
+    - {family: Roozenbeek, given: Jon}
+  year: 2026
+
+# Comment threads on each item page, stored in GitHub Discussions (https://giscus.app).
+# Leave enabled: false until the repository is public and Discussions are switched on,
+# then fill in the IDs that giscus.app shows for this repository.
+giscus:
+  enabled: false
+  repo_id: ""
+  category: "Checklist items"
+  category_id: ""

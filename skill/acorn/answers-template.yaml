@@ -1,0 +1,221 @@
+# ACORN report. Checklist version 0.1.0.
+# Fill in each item using the option codes (the 'value' entries in checklist.yaml), not their labels.
+# 'source' is one of: agent, human, agent_verified, unknown.
+# 'todo': what a human still has to approve or provide (shown in red in acorn-report.md). Empty when final.
+# For a missing answer use a missing-value code: unknown, not_applicable, not_disclosed, not_available.
+# The file must validate against acorn-report.schema.json in this folder.
+acorn_version: 0.1.0
+report:
+  report_id: null
+  title: null
+  authors: null
+  doi: null
+  discipline: null
+  report_date: null
+answers:
+  A1:
+    title: Models
+    answer: []
+    source: null
+    note: null
+    todo: null
+  A2:
+    title: Agent product and interface
+    answer:
+      agent_product: null
+      interface: null
+      execution_environment: null
+    source: null
+    note: null
+    todo: null
+  A3:
+    title: Level of human supervision
+    answer: null
+    source: null
+    note: null
+    todo: null
+  A4:
+    title: Permissions
+    answer: []
+    source: null
+    note: null
+    todo: null
+  A5:
+    title: Context, tools and aids
+    answer:
+      instruction_files: null
+      skills: null
+      tool_servers: null
+      web_access: null
+      subagents: null
+      other_aids: null
+    source: null
+    note: null
+    todo: null
+  A6:
+    title: Model settings
+    answer: null
+    source: null
+    note: null
+    todo: null
+  A7:
+    title: Other AI tools
+    answer: []
+    source: null
+    note: null
+    todo: null
+  B1:
+    title: Research goal given to the agent
+    answer: null
+    source: null
+    note: null
+    todo: null
+  B2:
+    title: Key instructions
+    answer: null
+    source: null
+    note: null
+    todo: null
+  B3:
+    title: Transcripts
+    answer:
+      deposited: null
+      location: null
+      anonymisation: null
+      reason_if_not: null
+    source: null
+    note: null
+    todo: null
+  C1:
+    title: Contributions by role
+    answer:
+      conceptualization:
+        level: null
+        description: null
+      literature:
+        level: null
+        description: null
+      methodology:
+        level: null
+        description: null
+      data_curation:
+        level: null
+        description: null
+      formal_analysis:
+        level: null
+        description: null
+      derivation:
+        level: null
+        description: null
+      simulation:
+        level: null
+        description: null
+      software:
+        level: null
+        description: null
+      validation:
+        level: null
+        description: null
+      visualization:
+        level: null
+        description: null
+      writing_draft:
+        level: null
+        description: null
+      writing_review:
+        level: null
+        description: null
+      references:
+        level: null
+        description: null
+      other:
+        level: null
+        description: null
+    source: null
+    note: null
+    todo: null
+  C2:
+    title: Origin of ideas
+    answer: []
+    source: null
+    note: null
+    todo: null
+  D1:
+    title: Key decisions
+    answer: []
+    source: null
+    note: null
+    todo: null
+  E1:
+    title: Human verification of agent outputs
+    answer: []
+    source: null
+    note: null
+    todo: null
+  E2:
+    title: Pre-registration and analytic flexibility
+    answer:
+      preregistered: null
+      prereg_link: null
+      saw_outcomes_before_plan: null
+      alternatives_run: null
+      all_reported: null
+      deviations: null
+    source: null
+    note: null
+    todo: null
+  E3:
+    title: Errors and corrections
+    answer: []
+    source: null
+    note: null
+    todo: null
+  F1:
+    title: Code and materials
+    answer: null
+    source: null
+    note: null
+    todo: null
+  F2:
+    title: Computational environment
+    answer:
+      languages: null
+      packages: null
+      environment_file: null
+      os_hardware: null
+      session_info: null
+    source: null
+    note: null
+    todo: null
+  F3:
+    title: Token use and cost
+    answer:
+      total_tokens: null
+      cost: null
+      currency: null
+      coverage: null
+    source: null
+    note: null
+    todo: null
+  G1:
+    title: Data the agent could access
+    answer: null
+    source: null
+    note: null
+    todo: null
+  G2:
+    title: Protection of personal or sensitive data
+    answer:
+      anonymised_before: null
+      sent_to_provider: null
+      provider_terms: null
+      other_safeguards: null
+    source: null
+    note: null
+    todo: null
+  G3:
+    title: Ethics approval
+    answer: null
+    source: null
+    note: null
+    todo: null

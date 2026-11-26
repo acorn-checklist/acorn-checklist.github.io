@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use ACORN, please cite it as below."
+title: "ACORN: AI CO-scientist Reporting Norms"
+type: dataset
+authors:
+  - family-names: Kyrychenko
+    given-names: Yara
+  - family-names: Roozenbeek
+    given-names: Jon
+version: 0.1.0
+date-released: 2026-11-26
+repository-code: "https://github.com/acorn-checklist/acorn-checklist.github.io"
+url: "https://acorn-checklist.github.io/"
+keywords:
+  - reporting checklist
+  - AI coding agents
+  - reproducibility
+  - research transparency

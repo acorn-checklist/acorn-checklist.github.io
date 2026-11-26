@@ -1,0 +1,170 @@
+variable,table,item_id,section,tier,introduced_in,label,measure,allowed_values
+A1_n,wide,A1,A,core,0.1.0,Models: number of rows,integer,
+A1.model_name,rows,A1,A,core,0.1.0,Models: Model name (one value per row),text,
+A1.provider,rows,A1,A,core,0.1.0,Models: Provider (one value per row),text,
+A1.version_id,rows,A1,A,core,0.1.0,Models: Exact version or ID string (one value per row),text,
+A1.size,rows,A1,A,core,0.1.0,"Models: Size (parameters), if disclosed (one value per row)",text,
+A1.access_dates,rows,A1,A,core,0.1.0,Models: Dates of access (one value per row),text,
+A1.source_link,rows,A1,A,core,0.1.0,Models: Source link (model card or docs) (one value per row),text,
+A1.used_for,rows,A1,A,core,0.1.0,Models: What it was used for (one value per row),text,
+A1_source,wide,A1,A,core,0.1.0,Models: who gave the answer,categorical,agent|human|agent_verified|unknown
+A2_agent_product,wide,A2,A,core,0.1.0,"Agent product and interface: Agent product and version (e.g. CLI tool, IDE extension, web app, custom framework)",text,
+A2_interface,wide,A2,A,core,0.1.0,Agent product and interface: Interface,categorical,command_line|ide_extension|web_app|desktop_app|api_custom_harness|notebook|other
+A2_execution_environment,wide,A2,A,core,0.1.0,"Agent product and interface: Where the agent's code ran (local machine, cloud sandbox, HPC, other)",text,
+A2_source,wide,A2,A,core,0.1.0,Agent product and interface: who gave the answer,categorical,agent|human|agent_verified|unknown
+A3,wide,A3,A,core,0.1.0,Level of human supervision,categorical,0|1|2|3
+A3_note,wide,A3,A,core,0.1.0,Level of human supervision: note,text,
+A3_source,wide,A3,A,core,0.1.0,Level of human supervision: who gave the answer,categorical,agent|human|agent_verified|unknown
+A4_read_files,wide,A4,A,core,0.1.0,Permissions: Read project files,binary,0|1
+A4_write_files,wide,A4,A,core,0.1.0,Permissions: Create or edit files,binary,0|1
+A4_run_code,wide,A4,A,core,0.1.0,Permissions: Run code or shell commands,binary,0|1
+A4_install_packages,wide,A4,A,core,0.1.0,Permissions: Install software or packages,binary,0|1
+A4_internet,wide,A4,A,core,0.1.0,Permissions: Access the internet,binary,0|1
+A4_external_services,wide,A4,A,core,0.1.0,"Permissions: Act on external services (e.g. push to repositories, send messages, query databases)",binary,0|1
+A4_skip_permissions,wide,A4,A,core,0.1.0,Permissions: All permission checks skipped,binary,0|1
+A4_note,wide,A4,A,core,0.1.0,Permissions: note,text,
+A4_source,wide,A4,A,core,0.1.0,Permissions: who gave the answer,categorical,agent|human|agent_verified|unknown
+A5_instruction_files,wide,A5,A,core,0.1.0,"Context, tools and aids: Project instruction or memory files (e.g. AGENTS.md, CLAUDE.md), and whether they are shared",text,
+A5_skills,wide,A5,A,core,0.1.0,"Context, tools and aids: Skills, plugins or custom commands",text,
+A5_tool_servers,wide,A5,A,core,0.1.0,"Context, tools and aids: Connected tools or servers (e.g. MCP servers, databases, APIs)",text,
+A5_web_access,wide,A5,A,core,0.1.0,"Context, tools and aids: Web search or browsing",text,
+A5_subagents,wide,A5,A,core,0.1.0,"Context, tools and aids: Use of subagents or multiple cooperating agents",text,
+A5_other_aids,wide,A5,A,core,0.1.0,"Context, tools and aids: Other aids (e.g. this checklist's skill, templates, retrieval systems)",text,
+A5_source,wide,A5,A,core,0.1.0,"Context, tools and aids: who gave the answer",categorical,agent|human|agent_verified|unknown
+A6,wide,A6,A,optional,0.1.0,Model settings,text,
+A6_source,wide,A6,A,optional,0.1.0,Model settings: who gave the answer,categorical,agent|human|agent_verified|unknown
+A7_n,wide,A7,A,core,0.1.0,Other AI tools: number of rows,integer,
+A7_purpose_language_editing_n,wide,A7,A,core,0.1.0,"Other AI tools: rows where Purpose (codes follow the STM classification, see guidance) = language_editing",integer,
+A7_purpose_translation_n,wide,A7,A,core,0.1.0,"Other AI tools: rows where Purpose (codes follow the STM classification, see guidance) = translation",integer,
+A7_purpose_drafting_text_n,wide,A7,A,core,0.1.0,"Other AI tools: rows where Purpose (codes follow the STM classification, see guidance) = drafting_text",integer,
+A7_purpose_illustrative_figures_n,wide,A7,A,core,0.1.0,"Other AI tools: rows where Purpose (codes follow the STM classification, see guidance) = illustrative_figures",integer,
+A7_purpose_data_formatting_n,wide,A7,A,core,0.1.0,"Other AI tools: rows where Purpose (codes follow the STM classification, see guidance) = data_formatting",integer,
+A7_purpose_data_visualisation_n,wide,A7,A,core,0.1.0,"Other AI tools: rows where Purpose (codes follow the STM classification, see guidance) = data_visualisation",integer,
+A7_purpose_code_formatting_n,wide,A7,A,core,0.1.0,"Other AI tools: rows where Purpose (codes follow the STM classification, see guidance) = code_formatting",integer,
+A7_purpose_reference_gathering_n,wide,A7,A,core,0.1.0,"Other AI tools: rows where Purpose (codes follow the STM classification, see guidance) = reference_gathering",integer,
+A7_purpose_literature_search_n,wide,A7,A,core,0.1.0,"Other AI tools: rows where Purpose (codes follow the STM classification, see guidance) = literature_search",integer,
+A7_purpose_data_analysis_n,wide,A7,A,core,0.1.0,"Other AI tools: rows where Purpose (codes follow the STM classification, see guidance) = data_analysis",integer,
+A7_purpose_code_generation_n,wide,A7,A,core,0.1.0,"Other AI tools: rows where Purpose (codes follow the STM classification, see guidance) = code_generation",integer,
+A7_purpose_other_n,wide,A7,A,core,0.1.0,"Other AI tools: rows where Purpose (codes follow the STM classification, see guidance) = other",integer,
+A7.tool,rows,A7,A,core,0.1.0,Other AI tools: Tool or model name (one value per row),text,
+A7.version_id,rows,A7,A,core,0.1.0,Other AI tools: Version or ID (one value per row),text,
+A7.provider,rows,A7,A,core,0.1.0,Other AI tools: Provider (one value per row),text,
+A7.purpose,rows,A7,A,core,0.1.0,"Other AI tools: Purpose (codes follow the STM classification, see guidance) (one value per row)",categorical,language_editing|translation|drafting_text|illustrative_figures|data_formatting|data_visualisation|code_formatting|reference_gathering|literature_search|data_analysis|code_generation|other
+A7.where_used,rows,A7,A,core,0.1.0,"Other AI tools: Where it was used (manuscript sections, figures, analysis steps) (one value per row)",text,
+A7.dates,rows,A7,A,core,0.1.0,Other AI tools: Dates of use (one value per row),text,
+A7_source,wide,A7,A,core,0.1.0,Other AI tools: who gave the answer,categorical,agent|human|agent_verified|unknown
+B1,wide,B1,B,core,0.1.0,Research goal given to the agent,text,
+B1_source,wide,B1,B,core,0.1.0,Research goal given to the agent: who gave the answer,categorical,agent|human|agent_verified|unknown
+B2,wide,B2,B,core,0.1.0,Key instructions,text,
+B2_source,wide,B2,B,core,0.1.0,Key instructions: who gave the answer,categorical,agent|human|agent_verified|unknown
+B3_deposited,wide,B3,B,optional,0.1.0,Transcripts: Deposited,categorical,all|partial|no
+B3_location,wide,B3,B,optional,0.1.0,Transcripts: Persistent link,text,
+B3_anonymisation,wide,B3,B,optional,0.1.0,Transcripts: What was removed or anonymised,text,
+B3_reason_if_not,wide,B3,B,optional,0.1.0,Transcripts: Reason if not deposited,text,
+B3_source,wide,B3,B,optional,0.1.0,Transcripts: who gave the answer,categorical,agent|human|agent_verified|unknown
+C1_conceptualization_level,wide,C1,C,core,0.1.0,"Contributions by role: Conceptualization (research questions, hypotheses): Agent contribution",categorical,none|assisted|led
+C1_conceptualization_description,wide,C1,C,core,0.1.0,"Contributions by role: Conceptualization (research questions, hypotheses): What the agent did",text,
+C1_literature_level,wide,C1,C,core,0.1.0,Contributions by role: Literature search and review: Agent contribution,categorical,none|assisted|led
+C1_literature_description,wide,C1,C,core,0.1.0,Contributions by role: Literature search and review: What the agent did,text,
+C1_methodology_level,wide,C1,C,core,0.1.0,"Contributions by role: Methodology (design, analysis plan): Agent contribution",categorical,none|assisted|led
+C1_methodology_description,wide,C1,C,core,0.1.0,"Contributions by role: Methodology (design, analysis plan): What the agent did",text,
+C1_data_curation_level,wide,C1,C,core,0.1.0,"Contributions by role: Data curation (collection, cleaning, merging): Agent contribution",categorical,none|assisted|led
+C1_data_curation_description,wide,C1,C,core,0.1.0,"Contributions by role: Data curation (collection, cleaning, merging): What the agent did",text,
+C1_formal_analysis_level,wide,C1,C,core,0.1.0,"Contributions by role: Formal analysis (statistics, models): Agent contribution",categorical,none|assisted|led
+C1_formal_analysis_description,wide,C1,C,core,0.1.0,"Contributions by role: Formal analysis (statistics, models): What the agent did",text,
+C1_derivation_level,wide,C1,C,core,0.1.0,"Contributions by role: Derivations, proofs or theory: Agent contribution",categorical,none|assisted|led
+C1_derivation_description,wide,C1,C,core,0.1.0,"Contributions by role: Derivations, proofs or theory: What the agent did",text,
+C1_simulation_level,wide,C1,C,core,0.1.0,Contributions by role: Simulation or computational modelling: Agent contribution,categorical,none|assisted|led
+C1_simulation_description,wide,C1,C,core,0.1.0,Contributions by role: Simulation or computational modelling: What the agent did,text,
+C1_software_level,wide,C1,C,core,0.1.0,"Contributions by role: Software (writing code, packages, pipelines): Agent contribution",categorical,none|assisted|led
+C1_software_description,wide,C1,C,core,0.1.0,"Contributions by role: Software (writing code, packages, pipelines): What the agent did",text,
+C1_validation_level,wide,C1,C,core,0.1.0,"Contributions by role: Validation (testing, checking results): Agent contribution",categorical,none|assisted|led
+C1_validation_description,wide,C1,C,core,0.1.0,"Contributions by role: Validation (testing, checking results): What the agent did",text,
+C1_visualization_level,wide,C1,C,core,0.1.0,"Contributions by role: Visualization (figures, tables): Agent contribution",categorical,none|assisted|led
+C1_visualization_description,wide,C1,C,core,0.1.0,"Contributions by role: Visualization (figures, tables): What the agent did",text,
+C1_writing_draft_level,wide,C1,C,core,0.1.0,Contributions by role: Writing the paper: original draft: Agent contribution,categorical,none|assisted|led
+C1_writing_draft_description,wide,C1,C,core,0.1.0,Contributions by role: Writing the paper: original draft: What the agent did,text,
+C1_writing_review_level,wide,C1,C,core,0.1.0,Contributions by role: Writing the paper: review and editing: Agent contribution,categorical,none|assisted|led
+C1_writing_review_description,wide,C1,C,core,0.1.0,Contributions by role: Writing the paper: review and editing: What the agent did,text,
+C1_references_level,wide,C1,C,core,0.1.0,Contributions by role: References and citations: Agent contribution,categorical,none|assisted|led
+C1_references_description,wide,C1,C,core,0.1.0,Contributions by role: References and citations: What the agent did,text,
+C1_other_level,wide,C1,C,core,0.1.0,Contributions by role: Other (specify): Agent contribution,categorical,none|assisted|led
+C1_other_description,wide,C1,C,core,0.1.0,Contributions by role: Other (specify): What the agent did,text,
+C1_source,wide,C1,C,core,0.1.0,Contributions by role: who gave the answer,categorical,agent|human|agent_verified|unknown
+C2_n,wide,C2,C,optional,0.1.0,Origin of ideas: number of rows,integer,
+C2_originated_by_human_n,wide,C2,C,optional,0.1.0,Origin of ideas: rows where Originated by = human,integer,
+C2_originated_by_agent_n,wide,C2,C,optional,0.1.0,Origin of ideas: rows where Originated by = agent,integer,
+C2_originated_by_joint_n,wide,C2,C,optional,0.1.0,Origin of ideas: rows where Originated by = joint,integer,
+C2_originated_by_unknown_n,wide,C2,C,optional,0.1.0,Origin of ideas: rows where Originated by = unknown,integer,
+C2_adopted_yes_n,wide,C2,C,optional,0.1.0,Origin of ideas: rows where Adopted in the final work? = yes,integer,
+C2_adopted_no_n,wide,C2,C,optional,0.1.0,Origin of ideas: rows where Adopted in the final work? = no,integer,
+C2_adopted_partly_n,wide,C2,C,optional,0.1.0,Origin of ideas: rows where Adopted in the final work? = partly,integer,
+C2.idea,rows,C2,C,optional,0.1.0,Origin of ideas: Idea (one value per row),text,
+C2.originated_by,rows,C2,C,optional,0.1.0,Origin of ideas: Originated by (one value per row),categorical,human|agent|joint|unknown
+C2.adopted,rows,C2,C,optional,0.1.0,Origin of ideas: Adopted in the final work? (one value per row),categorical,yes|no|partly
+C2_source,wide,C2,C,optional,0.1.0,Origin of ideas: who gave the answer,categorical,agent|human|agent_verified|unknown
+D1_n,wide,D1,D,core,0.1.0,Key decisions: number of rows,integer,
+D1_proposed_by_human_n,wide,D1,D,core,0.1.0,Key decisions: rows where Proposed by = human,integer,
+D1_proposed_by_agent_n,wide,D1,D,core,0.1.0,Key decisions: rows where Proposed by = agent,integer,
+D1_proposed_by_unknown_n,wide,D1,D,core,0.1.0,Key decisions: rows where Proposed by = unknown,integer,
+D1_approved_by_human_n,wide,D1,D,core,0.1.0,Key decisions: rows where Approved by = human,integer,
+D1_approved_by_agent_autonomous_n,wide,D1,D,core,0.1.0,Key decisions: rows where Approved by = agent_autonomous,integer,
+D1_approved_by_unknown_n,wide,D1,D,core,0.1.0,Key decisions: rows where Approved by = unknown,integer,
+D1.decision,rows,D1,D,core,0.1.0,"Key decisions: Decision (e.g. exclusion rule, model specification, outlier handling, deviation from plan) (one value per row)",text,
+D1.proposed_by,rows,D1,D,core,0.1.0,Key decisions: Proposed by (one value per row),categorical,human|agent|unknown
+D1.approved_by,rows,D1,D,core,0.1.0,Key decisions: Approved by (one value per row),categorical,human|agent_autonomous|unknown
+D1.rationale,rows,D1,D,core,0.1.0,Key decisions: Rationale (one value per row),text,
+D1.alternatives,rows,D1,D,core,0.1.0,Key decisions: Alternatives considered (one value per row),text,
+D1.where_documented,rows,D1,D,core,0.1.0,"Key decisions: Where documented (file, commit, transcript) (one value per row)",text,
+D1_source,wide,D1,D,core,0.1.0,Key decisions: who gave the answer,categorical,agent|human|agent_verified|unknown
+E1_n,wide,E1,E,core,0.1.0,Human verification of agent outputs: number of rows,integer,
+E1_method_read_line_by_line_n,wide,E1,E,core,0.1.0,Human verification of agent outputs: rows where Verification method = read_line_by_line,integer,
+E1_method_rerun_independently_n,wide,E1,E,core,0.1.0,Human verification of agent outputs: rows where Verification method = rerun_independently,integer,
+E1_method_tests_n,wide,E1,E,core,0.1.0,Human verification of agent outputs: rows where Verification method = tests,integer,
+E1_method_manual_calculation_n,wide,E1,E,core,0.1.0,Human verification of agent outputs: rows where Verification method = manual_calculation,integer,
+E1_method_spot_check_n,wide,E1,E,core,0.1.0,Human verification of agent outputs: rows where Verification method = spot_check,integer,
+E1_method_not_verified_n,wide,E1,E,core,0.1.0,Human verification of agent outputs: rows where Verification method = not_verified,integer,
+E1.output,rows,E1,E,core,0.1.0,"Human verification of agent outputs: Output (e.g. cleaning script, main model, figure 2, manuscript section) (one value per row)",text,
+E1.method,rows,E1,E,core,0.1.0,Human verification of agent outputs: Verification method (one value per row),categorical,read_line_by_line|rerun_independently|tests|manual_calculation|spot_check|not_verified
+E1.notes,rows,E1,E,core,0.1.0,Human verification of agent outputs: Notes (one value per row),text,
+E1_source,wide,E1,E,core,0.1.0,Human verification of agent outputs: who gave the answer,categorical,agent|human|agent_verified|unknown
+E2_preregistered,wide,E2,E,core,0.1.0,Pre-registration and analytic flexibility: Pre-registered,categorical,yes|no|not_applicable
+E2_prereg_link,wide,E2,E,core,0.1.0,Pre-registration and analytic flexibility: Link to pre-registration,text,
+E2_saw_outcomes_before_plan,wide,E2,E,core,0.1.0,Pre-registration and analytic flexibility: Did the agent see outcome data before the analysis plan was fixed?,categorical,yes|no|unknown
+E2_alternatives_run,wide,E2,E,core,0.1.0,Pre-registration and analytic flexibility: Approximate number of alternative analyses or specifications the agent ran,integer,
+E2_all_reported,wide,E2,E,core,0.1.0,Pre-registration and analytic flexibility: Are all alternatives reported (e.g. in supplementary material)?,categorical,yes|no|partly
+E2_deviations,wide,E2,E,core,0.1.0,Pre-registration and analytic flexibility: Deviations from the pre-registration and who decided them,text,
+E2_source,wide,E2,E,core,0.1.0,Pre-registration and analytic flexibility: who gave the answer,categorical,agent|human|agent_verified|unknown
+E3_n,wide,E3,E,optional,0.1.0,Errors and corrections: number of rows,integer,
+E3_caught_by_human_n,wide,E3,E,optional,0.1.0,Errors and corrections: rows where Caught by = human,integer,
+E3_caught_by_agent_n,wide,E3,E,optional,0.1.0,Errors and corrections: rows where Caught by = agent,integer,
+E3_caught_by_test_n,wide,E3,E,optional,0.1.0,Errors and corrections: rows where Caught by = test,integer,
+E3_caught_by_reviewer_n,wide,E3,E,optional,0.1.0,Errors and corrections: rows where Caught by = reviewer,integer,
+E3.error,rows,E3,E,optional,0.1.0,"Errors and corrections: Error (e.g. wrong code, invented function or package, invented citation, silent data change) (one value per row)",text,
+E3.caught_by,rows,E3,E,optional,0.1.0,Errors and corrections: Caught by (one value per row),categorical,human|agent|test|reviewer
+E3.fix,rows,E3,E,optional,0.1.0,Errors and corrections: How it was fixed (one value per row),text,
+E3_source,wide,E3,E,optional,0.1.0,Errors and corrections: who gave the answer,categorical,agent|human|agent_verified|unknown
+F1,wide,F1,F,core,0.1.0,Code and materials,text,
+F1_source,wide,F1,F,core,0.1.0,Code and materials: who gave the answer,categorical,agent|human|agent_verified|unknown
+F2_languages,wide,F2,F,core,0.1.0,Computational environment: Languages and versions,text,
+F2_packages,wide,F2,F,core,0.1.0,Computational environment: Key packages and versions,text,
+F2_environment_file,wide,F2,F,core,0.1.0,"Computational environment: Environment specification file (e.g. renv.lock, uv.lock, environment.yml, Dockerfile, Manifest.toml)",text,
+F2_os_hardware,wide,F2,F,core,0.1.0,Computational environment: Operating system and relevant hardware,text,
+F2_session_info,wide,F2,F,core,0.1.0,"Computational environment: Session information deposited (e.g. sessionInfo(), pip freeze) and where",text,
+F2_source,wide,F2,F,core,0.1.0,Computational environment: who gave the answer,categorical,agent|human|agent_verified|unknown
+F3_total_tokens,wide,F3,F,optional,0.1.0,Token use and cost: Approximate total tokens (input and output),integer,
+F3_cost,wide,F3,F,optional,0.1.0,Token use and cost: Approximate cost,number,
+F3_currency,wide,F3,F,optional,0.1.0,"Token use and cost: Currency of the cost (e.g. USD, GBP)",text,
+F3_coverage,wide,F3,F,optional,0.1.0,Token use and cost: Do these figures cover all agent sessions in the project?,categorical,all_sessions|some_sessions|unknown
+F3_source,wide,F3,F,optional,0.1.0,Token use and cost: who gave the answer,categorical,agent|human|agent_verified|unknown
+G1,wide,G1,G,core,0.1.0,Data the agent could access,categorical,none|schema|synthetic|sample|full
+G1_note,wide,G1,G,core,0.1.0,Data the agent could access: note,text,
+G1_source,wide,G1,G,core,0.1.0,Data the agent could access: who gave the answer,categorical,agent|human|agent_verified|unknown
+G2_anonymised_before,wide,G2,G,core,0.1.0,Protection of personal or sensitive data: Anonymised or pseudonymised before the agent saw it?,categorical,yes|no|not_applicable
+G2_sent_to_provider,wide,G2,G,core,0.1.0,Protection of personal or sensitive data: Was data sent to the model provider's servers?,categorical,yes|no|unknown
+G2_provider_terms,wide,G2,G,core,0.1.0,"Protection of personal or sensitive data: Provider's data retention and training terms that applied (e.g. zero retention, no training on data)",text,
+G2_other_safeguards,wide,G2,G,core,0.1.0,"Protection of personal or sensitive data: Other safeguards (e.g. local model, secure environment)",text,
+G2_source,wide,G2,G,core,0.1.0,Protection of personal or sensitive data: who gave the answer,categorical,agent|human|agent_verified|unknown
+G3,wide,G3,G,core,0.1.0,Ethics approval,categorical,yes|no|not_required|unknown
+G3_note,wide,G3,G,core,0.1.0,Ethics approval: note,text,
+G3_source,wide,G3,G,core,0.1.0,Ethics approval: who gave the answer,categorical,agent|human|agent_verified|unknown

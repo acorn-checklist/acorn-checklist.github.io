@@ -1,0 +1,401 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb,array,longtable,tabularx,enumitem,xcolor,titlesec}
+\usepackage[hidelinks]{hyperref}
+\newcommand{\abox}{$\square$}
+\newcommand{\answerline}{\rule{0pt}{2.2em}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\titleformat{\subsection}{\normalfont\bfseries}{}{0pt}{}
+% Generated from checklist/checklist.yaml by scripts/build_formats.py. Do not edit by hand.
+\begin{document}
+{\LARGE\bfseries ACORN: AI CO-scientist Reporting Norms}\\[2pt]
+{\large Reporting checklist for research assisted by AI coding agents}\\[2pt]
+Version 0.1.0 (2026-11-26)
+
+Use this checklist to report how AI coding agents assisted your research. Core items should always be reported; optional items when relevant. For each item, record who provided the answer. If an answer is missing, say why: unknown, not applicable, not disclosed or not available. Coding agents can fill in most of this checklist themselves with the ACORN skill.
+
+\textbf{Project title:} \hrulefill\\[4pt]
+\textbf{Authors:} \hrulefill\\[4pt]
+\textbf{Date completed:} \hrulefill
+
+\section*{A. Agent, interface and supervision}
+\emph{Identify exactly which agents were used, how they were accessed, what they could do, and how closely humans supervised them.}
+
+\subsection*{A1. Models \normalfont\small(core)}
+\textbf{Which model(s) powered the agent(s)? List every model used, including any change of model during the project.}\\
+{\small\color{darkgray}\emph{Report the exact identifier the interface reports (e.g. a dated model ID), not a marketing name alone. Use not\_disclosed for size when the provider does not publish it. If the model changed partway through, list each model and when it was used.}}
+
+{\small\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}\hline
+\textbf{Model name} & \textbf{Provider} & \textbf{Exact version or ID string} & \textbf{Size (parameters), if disclosed} & \textbf{Dates of access} & \textbf{Source link (model card or docs)} & \textbf{What it was used for} \\ \hline
+\answerline &  &  &  &  &  &  \\ \hline
+\answerline &  &  &  &  &  &  \\ \hline
+\answerline &  &  &  &  &  &  \\ \hline
+\end{tabularx}}
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{A2. Agent product and interface \normalfont\small(core)}
+\textbf{Which agent product and interface were used to run the agent?}\\
+{\small\color{darkgray}\emph{The agent product matters as much as the model, because it sets the tools, permissions and system prompt.}}
+
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.38\linewidth}|X|}\hline
+Agent product and version (e.g. CLI tool, IDE extension, web app, custom framework) & \answerline \\ \hline
+Interface & \abox{} command line\enspace \abox{} ide extension\enspace \abox{} web app\enspace \abox{} desktop app\enspace \abox{} api custom harness\enspace \abox{} notebook\enspace \abox{} other \\ \hline
+Where the agent's code ran (local machine, cloud sandbox, HPC, other) & \answerline \\ \hline
+\end{tabularx}
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{A3. Level of human supervision \normalfont\small(core)}
+\textbf{How closely did humans supervise the agent's actions? Choose the level that best describes most of the work, and note exceptions.}\\
+{\small\color{darkgray}\emph{If different stages ran at different levels (e.g. Level 1 for analysis, Level 3 for figure formatting), say so in the note.}}
+
+\begin{itemize}[label={},leftmargin=1em,itemsep=0pt]
+\item \abox{} Level 0: Human ran every step; the agent only suggested code or text
+\item \abox{} Level 1: Agent proposed actions; a human approved each one before it ran
+\item \abox{} Level 2: Agent acted within default permissions; a human approved risky actions
+\item \abox{} Level 3: Agent ran largely unattended, or with permission checks skipped
+\end{itemize}
+Note: \hrulefill
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{A4. Permissions \normalfont\small(core)}
+\textbf{Which permissions did the agent have?}\\
+{\small\color{darkgray}\emph{Report what the agent was allowed to do, whether or not it used every permission.}}
+
+\begin{itemize}[label={},leftmargin=1em,itemsep=0pt]
+\item \abox{} Read project files
+\item \abox{} Create or edit files
+\item \abox{} Run code or shell commands
+\item \abox{} Install software or packages
+\item \abox{} Access the internet
+\item \abox{} Act on external services (e.g. push to repositories, send messages, query databases)
+\item \abox{} All permission checks skipped
+\end{itemize}
+Note: \hrulefill
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{A5. Context, tools and aids \normalfont\small(core)}
+\textbf{What context, tools and aids were available to the agent?}\\
+{\small\color{darkgray}\emph{These shape the agent's behaviour as much as the model does. Share instruction files in the replication package where possible.}}
+
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.38\linewidth}|X|}\hline
+Project instruction or memory files (e.g. AGENTS.md, CLAUDE.md), and whether they are shared & \answerline \\ \hline
+Skills, plugins or custom commands & \answerline \\ \hline
+Connected tools or servers (e.g. MCP servers, databases, APIs) & \answerline \\ \hline
+Web search or browsing & \answerline \\ \hline
+Use of subagents or multiple cooperating agents & \answerline \\ \hline
+Other aids (e.g. this checklist's skill, templates, retrieval systems) & \answerline \\ \hline
+\end{tabularx}
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{A6. Model settings \normalfont\small(optional)}
+\textbf{Were any non-default model settings used (e.g. temperature, reasoning effort, context length, seed)?}\\
+{\small\color{darkgray}\emph{Most agent products do not expose these. Write ''defaults'' if nothing was changed.}}
+
+\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\rule{0pt}{4em}}}
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{A7. Other AI tools \normalfont\small(core)}
+\textbf{Were any other AI tools used in the project or the manuscript, besides the agent(s) in A1 (e.g. a chatbot for language editing or translation, an AI literature search tool, an image generator)?
+}\\
+{\small\color{darkgray}\emph{Publishers require every AI tool to be disclosed, not only coding agents, so that the disclosure statement is complete. Leave the table empty if no other tools were used. Spelling and grammar checkers built into word processors do not need listing. Purpose codes for manuscript preparation follow the STM classification of AI use in manuscript preparation (2025): language\_editing (STM 1), translation (2), drafting\_text (3), illustrative\_figures (4: illustrations not based on data), data\_formatting (5), data\_visualisation (6: graphs or tables of research data), code\_formatting (7: no change in what the code does), reference\_gathering (8). Uses in the research itself, which STM does not cover, are literature\_search, data\_analysis and code\_generation. AI content presented as real research data or results (STM 9) is prohibited by publishers. List any AI-generated or AI-edited figure or image here, even if the agent made it, since most publishers require a disclosure in that figure's legend.}}
+
+{\small\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}\hline
+\textbf{Tool or model name} & \textbf{Version or ID} & \textbf{Provider} & \textbf{Purpose (codes follow the STM classification, see guidance)} & \textbf{Where it was used (manuscript sections, figures, analysis steps)} & \textbf{Dates of use} \\ \hline
+\answerline &  &  &  &  &  \\ \hline
+\answerline &  &  &  &  &  \\ \hline
+\answerline &  &  &  &  &  \\ \hline
+\end{tabularx}}
+{\footnotesize Purpose (codes follow the STM classification, see guidance): language editing, translation, drafting text, illustrative figures, data formatting, data visualisation, code formatting, reference gathering, literature search, data analysis, code generation, other}\\
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\section*{B. Human goals and instructions}
+\emph{Record what the humans asked the agent to do, so that its actions can be judged against its instructions.}
+
+\subsection*{B1. Research goal given to the agent \normalfont\small(core)}
+\textbf{What overall goal did the humans give the agent?}\\
+{\small\color{darkgray}\emph{One to three sentences in the researchers' words, e.g. ''Clean the survey data and run the pre-registered models''.}}
+
+\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\rule{0pt}{4em}}}
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{B2. Key instructions \normalfont\small(core)}
+\textbf{What were the key instructions that shaped the work (e.g. constraints, preferred methods, things the agent was told not to do)?}\\
+{\small\color{darkgray}\emph{Summarise instructions that changed what the agent did. Full prompts belong in the transcripts, if you deposit them (B3).}}
+
+\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{\rule{0pt}{4em}}}
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{B3. Transcripts \normalfont\small(optional)}
+\textbf{Are the conversation transcripts (anonymised where needed) publicly deposited, and where?}\\
+{\small\color{darkgray}\emph{Full transcripts are the strongest record of who decided what. If they cannot be shared, explain why and what is shared instead.}}
+
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.38\linewidth}|X|}\hline
+Deposited & \abox{} all\enspace \abox{} partial\enspace \abox{} no \\ \hline
+Persistent link & \answerline \\ \hline
+What was removed or anonymised & \answerline \\ \hline
+Reason if not deposited & \answerline \\ \hline
+\end{tabularx}
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\section*{C. Agent contributions}
+\emph{Record which parts of the research the agent contributed to, and which ideas came from the agent versus the humans.}
+
+\subsection*{C1. Contributions by role \normalfont\small(core)}
+\textbf{For each research role, how much did the agent contribute?}\\
+{\small\color{darkgray}\emph{Roles follow the CRediT contributor taxonomy, with additions for literature, derivations, simulation and references. ''Assisted'' means a human led and the agent helped; ''led'' means the agent did most of the work. The two writing roles cover the text of the paper itself: use ''original draft'' when text the agent wrote appears in the paper, and ''review and editing'' when the agent revised the paper's text. Text the agent wrote for anything else (documentation, study materials, code comments, the research product itself) goes under the role it served, or under Other.}}
+
+{\small\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}\hline
+\textbf{Role} & \textbf{Agent contribution} & \textbf{What the agent did} \\ \hline
+Conceptualization (research questions, hypotheses) &  &  \\ \hline
+Literature search and review &  &  \\ \hline
+Methodology (design, analysis plan) &  &  \\ \hline
+Data curation (collection, cleaning, merging) &  &  \\ \hline
+Formal analysis (statistics, models) &  &  \\ \hline
+Derivations, proofs or theory &  &  \\ \hline
+Simulation or computational modelling &  &  \\ \hline
+Software (writing code, packages, pipelines) &  &  \\ \hline
+Validation (testing, checking results) &  &  \\ \hline
+Visualization (figures, tables) &  &  \\ \hline
+Writing the paper: original draft &  &  \\ \hline
+Writing the paper: review and editing &  &  \\ \hline
+References and citations &  &  \\ \hline
+Other (specify) &  &  \\ \hline
+\end{tabularx}}
+{\footnotesize Agent contribution: none, assisted, led}\\
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{C2. Origin of ideas \normalfont\small(optional)}
+\textbf{Which substantive ideas (hypotheses, research questions, analytic approaches, interpretations) came from the agent, and which from humans?}\\
+{\small\color{darkgray}\emph{List ideas that shaped the paper. Ideas from meetings or earlier sessions often need the humans to fill in.}}
+
+{\small\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}\hline
+\textbf{Idea} & \textbf{Originated by} & \textbf{Adopted in the final work?} \\ \hline
+\answerline &  &  \\ \hline
+\answerline &  &  \\ \hline
+\answerline &  &  \\ \hline
+\end{tabularx}}
+{\footnotesize Originated by: human, agent, joint, unknown}\\
+{\footnotesize Adopted in the final work?: yes, no, partly}\\
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\section*{D. Decision log}
+\emph{Record who made the key decisions and why. Agents make many decisions quickly and confidently; readers need to know which were made by humans and which by agents.}
+
+\subsection*{D1. Key decisions \normalfont\small(core)}
+\textbf{List the decisions that could change the results or their interpretation, and who proposed and approved each one.}\\
+{\small\color{darkgray}\emph{Include every decision a careful reviewer would ask about. ''Approved by: agent\_autonomous'' means the agent made and acted on the decision without a human approving it.}}
+
+{\small\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}\hline
+\textbf{Decision (e.g. exclusion rule, model specification, outlier handling, deviation from plan)} & \textbf{Proposed by} & \textbf{Approved by} & \textbf{Rationale} & \textbf{Alternatives considered} & \textbf{Where documented (file, commit, transcript)} \\ \hline
+\answerline &  &  &  &  &  \\ \hline
+\answerline &  &  &  &  &  \\ \hline
+\answerline &  &  &  &  &  \\ \hline
+\end{tabularx}}
+{\footnotesize Proposed by: human, agent, unknown}\\
+{\footnotesize Approved by: human, agent autonomous, unknown}\\
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\section*{E. Verification and research integrity}
+\emph{Record how agent outputs were checked, how flexible the analysis was, and what went wrong.}
+
+\subsection*{E1. Human verification of agent outputs \normalfont\small(core)}
+\textbf{How did humans verify the agent's outputs?}\\
+{\small\color{darkgray}\emph{Supervision during the session (A3) is not the same as checking the outputs afterwards. Report both.}}
+
+{\small\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}\hline
+\textbf{Output (e.g. cleaning script, main model, figure 2, manuscript section)} & \textbf{Verification method} & \textbf{Notes} \\ \hline
+\answerline &  &  \\ \hline
+\answerline &  &  \\ \hline
+\answerline &  &  \\ \hline
+\end{tabularx}}
+{\footnotesize Verification method: read line by line, rerun independently, tests, manual calculation, spot check, not verified}\\
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{E2. Pre-registration and analytic flexibility \normalfont\small(core)}
+\textbf{Was the study pre-registered, and how much did the agent explore alternative analyses?}\\
+{\small\color{darkgray}\emph{Agents can run many specifications quickly. Report them so readers can judge the risk of undisclosed analytic flexibility.}}
+
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.38\linewidth}|X|}\hline
+Pre-registered & \abox{} yes\enspace \abox{} no\enspace \abox{} not applicable \\ \hline
+Link to pre-registration & \answerline \\ \hline
+Did the agent see outcome data before the analysis plan was fixed? & \abox{} yes\enspace \abox{} no\enspace \abox{} unknown \\ \hline
+Approximate number of alternative analyses or specifications the agent ran & \answerline \\ \hline
+Are all alternatives reported (e.g. in supplementary material)? & \abox{} yes\enspace \abox{} no\enspace \abox{} partly \\ \hline
+Deviations from the pre-registration and who decided them & \answerline \\ \hline
+\end{tabularx}
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{E3. Errors and corrections \normalfont\small(optional)}
+\textbf{What notable agent errors were found, and how were they caught?}\\
+{\small\color{darkgray}\emph{Reporting errors helps readers judge reliability, and helps the field learn where agents fail.}}
+
+{\small\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|>{\raggedright\arraybackslash}X|}\hline
+\textbf{Error (e.g. wrong code, invented function or package, invented citation, silent data change)} & \textbf{Caught by} & \textbf{How it was fixed} \\ \hline
+\answerline &  &  \\ \hline
+\answerline &  &  \\ \hline
+\answerline &  &  \\ \hline
+\end{tabularx}}
+{\footnotesize Caught by: human, agent, test, reviewer}\\
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\section*{F. Reproducibility}
+\emph{Give an independent researcher or agent what they need to reproduce the analyses and results.}
+
+\subsection*{F1. Code and materials \normalfont\small(core)}
+\textbf{Where are the code, scripts and materials produced with the agent deposited?}\\
+{\small\color{darkgray}\emph{Use a persistent archive (e.g. a Zenodo DOI or OSF), not only a repository URL.}}
+
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.38\linewidth}|X|}\hline
+Persistent link (DOI, repository, archive) & \answerline \\ \hline
+Reason if not shared & \answerline \\ \hline
+\end{tabularx}
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{F2. Computational environment \normalfont\small(core)}
+\textbf{What languages, packages and versions were used, and where is the exact environment specified?}\\
+{\small\color{darkgray}\emph{Pin exact versions in a lock file and deposit it with the code.}}
+
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.38\linewidth}|X|}\hline
+Languages and versions & \answerline \\ \hline
+Key packages and versions & \answerline \\ \hline
+Environment specification file (e.g. renv.lock, uv.lock, environment.yml, Dockerfile, Manifest.toml) & \answerline \\ \hline
+Operating system and relevant hardware & \answerline \\ \hline
+Session information deposited (e.g. sessionInfo(), pip freeze) and where & \answerline \\ \hline
+\end{tabularx}
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{F3. Token use and cost \normalfont\small(optional)}
+\textbf{Approximately how many tokens were used, and what did agent use cost?}\\
+{\small\color{darkgray}\emph{Report approximate figures if available. Use ''not\_available'' if the interface does not show them, or the cost of a flat subscription if that is all you know.}}
+
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.38\linewidth}|X|}\hline
+Approximate total tokens (input and output) & \answerline \\ \hline
+Approximate cost & \answerline \\ \hline
+Currency of the cost (e.g. USD, GBP) & \answerline \\ \hline
+Do these figures cover all agent sessions in the project? & \abox{} all sessions\enspace \abox{} some sessions\enspace \abox{} unknown \\ \hline
+\end{tabularx}
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\section*{G. Data protection and ethics}
+\emph{Record what data the agent saw, where that data went, and how personal or sensitive information was protected.}
+
+\subsection*{G1. Data the agent could access \normalfont\small(core)}
+\textbf{What level of data access did the agent have?}\\
+{\small\color{darkgray}\emph{Note in the note field whether the data contained personal or sensitive information.}}
+
+\begin{itemize}[label={},leftmargin=1em,itemsep=0pt]
+\item \abox{} No research data
+\item \abox{} Variable names, schema or codebook only
+\item \abox{} Synthetic or simulated data only
+\item \abox{} A sample of the data
+\item \abox{} The full dataset
+\end{itemize}
+Note: \hrulefill
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{G2. Protection of personal or sensitive data \normalfont\small(core)}
+\textbf{How was personal or sensitive information protected?}\\
+{\small\color{darkgray}\emph{Where the data went and who keeps it matters as much as whether it was anonymised.}}
+
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}p{0.38\linewidth}|X|}\hline
+Anonymised or pseudonymised before the agent saw it? & \abox{} yes\enspace \abox{} no\enspace \abox{} not applicable \\ \hline
+Was data sent to the model provider's servers? & \abox{} yes\enspace \abox{} no\enspace \abox{} unknown \\ \hline
+Provider's data retention and training terms that applied (e.g. zero retention, no training on data) & \answerline \\ \hline
+Other safeguards (e.g. local model, secure environment) & \answerline \\ \hline
+\end{tabularx}
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\subsection*{G3. Ethics approval \normalfont\small(core)}
+\textbf{Did the ethics approval or data agreement cover processing the data with an AI agent?}\\
+{\small\color{darkgray}\emph{Name the approving body and reference number where relevant.}}
+
+\begin{itemize}[label={},leftmargin=1em,itemsep=0pt]
+\item \abox{} Yes, explicitly
+\item \abox{} No
+\item \abox{} Not required (e.g. no human-subjects data)
+\item \abox{} Unknown
+\end{itemize}
+Note: \hrulefill
+
+{\small Answered by: \abox{} Agent (from its own records, settings or project files)\quad \abox{} Human\quad \abox{} Agent, checked by a human\quad \abox{} Unknown}
+
+\clearpage
+\section*{Disclosure wording for your manuscript}
+Copy this wording into your manuscript. Replace each part in square brackets, or let the ACORN skill fill it in from your completed report. Publishers want AI use in the research described in the Methods, and writing or translation help declared in the Acknowledgements or a separate AI declaration; some also ask for a note in the cover letter and in the legend of any AI-generated or AI-edited figure. Check your target journal's policy (see the publisher policy table) and use the pieces it asks for.
+
+\subsection*{Methods}
+{\small\emph{Where: Methods section (or a subsection such as ''Use of AI tools''). Required by all major publishers for AI used in the research, including code and analysis.}}
+\begin{quote}
+AI coding agents assisted with this research. We used [agent product and model with its exact version, e.g. Example Agent CLI 2.3 with example-model-2026-09-01 (Example Provider)] for [research tasks, e.g. data cleaning and writing the analysis code]. [human oversight, e.g. The authors approved each action of the agent before it ran.] [how outputs were checked, e.g. The authors read all agent-written code line by line and re-ran the main analyses independently.] The authors take full responsibility for all AI-assisted outputs. The use of AI agents, including which decisions were made by the agents and which by the authors, is documented in the completed ACORN checklist (v0.1.0), available at [URL/DOI].
+\end{quote}
+
+\subsection*{Acknowledgements (full)}
+{\small\emph{Where: Acknowledgements}}
+\begin{quote}
+AI coding agents assisted with parts of this work, including [tasks, e.g. data cleaning, analysis code and figures]. Their use is documented in the completed ACORN checklist (v0.1.0), available at [URL/DOI]. The authors reviewed all AI-assisted outputs and take full responsibility for the content.
+\end{quote}
+
+\subsection*{Acknowledgements (short)}
+{\small\emph{Where: Acknowledgements, when space is limited and the Methods already describe the AI use}}
+\begin{quote}
+AI tools were used in this work and are reported in the ACORN checklist (v0.1.0): [URL/DOI].
+\end{quote}
+
+\subsection*{AI declaration for writing assistance}
+{\small\emph{Where: A separate declaration where the journal asks for one (e.g. Elsevier's ''Declaration of generative AI and AI-assisted technologies in the manuscript preparation process''), otherwise the Acknowledgements. Needed when AI drafted, restructured or translated text; basic grammar and spelling checks are exempt.}}
+\begin{quote}
+During the preparation of this work, the authors used [AI tools used for writing, with versions] for [writing tasks, e.g. editing the language of the Introduction and translating the abstract]. After using these tools, the authors reviewed and edited the content as needed and take full responsibility for the content of the published article.
+\end{quote}
+
+\subsection*{Figure legend}
+{\small\emph{Where: The legend of each figure or image that AI generated or edited (required by Elsevier, Wiley, PNAS and Springer Nature; Science journals need the editors' permission first). Not needed for plots that code draws from your data, which the Methods cover.}}
+\begin{quote}
+This figure was created or edited with the help of [AI tool and version, and what it did to the figure]. The authors checked that it accurately represents the underlying data or concept.
+\end{quote}
+
+\subsection*{Cover letter}
+{\small\emph{Where: Cover letter to the editor (required by Science journals, and useful for any journal)}}
+\begin{quote}
+AI coding agents were used in this research and are described in the Methods. Their use is documented in full in the completed ACORN checklist (v0.1.0), available at [URL/DOI].
+\end{quote}
+
+\subsection*{Data and code availability}
+{\small\emph{Where: Data, code or materials availability statement}}
+\begin{quote}
+The completed ACORN report on the use of AI coding agents (v0.1.0) is available with the replication materials at [URL/DOI].
+\end{quote}
+
+\textbf{Tips}
+\begin{itemize}[itemsep=0pt]
+\item Cite the exact ACORN version you used, as the wording does, so readers know which items you answered.
+\item Deposit the completed report (acorn-report.yaml and acorn-report.md) with a persistent identifier, such as a Zenodo or OSF DOI, and link to that DOI rather than to a web page or repository URL that may change.
+\item Cite ACORN itself in your references (see How to cite on the ACORN website).
+\item Do not list an AI agent as an author, and do not cite an AI tool as the author of a source. Every major publisher forbids it.
+\item Disclose every AI tool, not only the coding agent (item A7), and name each with its exact version.
+\end{itemize}
+
+\end{document}
