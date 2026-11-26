@@ -153,7 +153,8 @@ class Site:
         names = [f"{a['family']}, {a['given'][0]}." for a in c["authors"]]
         authors = names[0] if len(names) == 1 else ", ".join(names[:-1]) + ", & " + names[-1]
         return (f"{authors} ({c['year']}). {self.meta['name']}: {self.meta['full_name']} "
-                f"(Version {self.meta['version']}) [Reporting checklist]. {self.site_url()}")
+                f"(Version {self.meta['version']}) [Reporting checklist]. "
+                + (f"https://doi.org/{c['doi']}" if c.get("doi") else self.site_url()))
 
     def bibtex(self):
         c = self.config["citation"]
@@ -162,7 +163,8 @@ class Site:
         return (f"@misc{{{key},\n  author = {{{names}}},\n"
                 f"  title = {{{{{self.meta['name']}}}: {self.meta['full_name']}}},\n"
                 f"  year = {{{c['year']}}},\n  version = {{{self.meta['version']}}},\n"
-                f"  howpublished = {{\\url{{{self.site_url()}}}}},\n  note = {{Reporting checklist}}\n}}")
+                + (f"  doi = {{{c['doi']}}},\n" if c.get("doi") else "")
+                + f"  howpublished = {{\\url{{{self.site_url()}}}}},\n  note = {{Reporting checklist}}\n}}")
 
     def citation_html(self):
         return (f'<pre class="cite">{esc(self.citation_text())}</pre>'
@@ -655,8 +657,7 @@ See the <a href="downloads/codebook.csv">codebook</a> and the <a href="examples.
 
     EXAMPLES = [
         ("acorn-self-report", "acorn-self-report.yaml", "How ACORN itself was built",
-         "A real report on how an AI coding agent helped create ACORN: the checklist, skill, formats and this website. "
-         "It is a draft, so the items the authors still have to approve are marked with red TODOs."),
+         "A real, completed report on how an AI coding agent helped create ACORN: the checklist, skill, formats and this website."),
         ("fictional-example", "acorn-report-example.yaml", "Fictional online experiment",
          "A made-up, completed report for an online behavioural experiment, showing what a finished report looks like."),
     ]

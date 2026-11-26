@@ -8,6 +8,7 @@ citation:
     - {family: Kyrychenko, given: Yara}
     - {family: Roozenbeek, given: Jon}
   year: 2026
+  doi: 10.5281/zenodo.24560705  # DOI of the current release on Zenodo
 
 # Comment threads on each item page, stored in GitHub Discussions (https://giscus.app).
 # Leave enabled: false until the repository is public and Discussions are switched on,

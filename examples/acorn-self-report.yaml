@@ -1,10 +1,10 @@
-# ACORN report for the development of ACORN itself (draft: items with a 'todo' still need the authors' approval).
+# ACORN report for the development of ACORN itself.
 acorn_version: 0.1.0
 report:
   report_id: acorn-self-report-2026-11-17
   title: 'ACORN: AI CO-scientist Reporting Norms (development of the checklist, website, skill and tooling)'
   authors: Yara Kyrychenko (YK); Jon Roozenbeek (JR)
-  doi: not_available
+  doi: 10.5281/zenodo.24560705
   discipline: meta-science / research methods
   report_date: '2026-11-26'
 answers:
@@ -441,11 +441,11 @@ answers:
     todo: null
   F1:
     title: Code and materials
-    answer: 'https://github.com/acorn-checklist/acorn-checklist.github.io (release 0.1.0); website https://acorn-checklist.github.io. Developed in a private repository; its
+    answer: 'https://doi.org/10.5281/zenodo.24560705 (release 0.1.0, archived on Zenodo); source https://github.com/acorn-checklist/acorn-checklist.github.io; website https://acorn-checklist.github.io. Developed in a private repository; its
       history is available from the authors on request.'
-    source: agent
-    note: Not yet in a persistent public archive.
-    todo: Add the Zenodo DOI of release 0.1.0 once it exists.
+    source: agent_verified
+    note: null
+    todo: null
   F2:
     title: Computational environment
     answer:

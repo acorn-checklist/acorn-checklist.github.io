@@ -9,6 +9,7 @@ authors:
     given-names: Jon
 version: 0.1.0
 date-released: 2026-11-26
+doi: 10.5281/zenodo.24560705
 repository-code: "https://github.com/acorn-checklist/acorn-checklist.github.io"
 url: "https://acorn-checklist.github.io/"
 keywords:
